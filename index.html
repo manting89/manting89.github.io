@@ -2,11 +2,12 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
 ?>
+
 <html>
 <head>
   <title>Manting Xie's Homepage</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name=ProgId content=Word.Document>
   <meta name=Generator content="Microsoft Word 15">
@@ -14,261 +15,593 @@ header("Content-type: text/html; charset=utf-8");
   <meta name="description" content="Manting Xie is currently an associate professor at Tianjin University">
   <meta name="keywords" content="Manting Xie, xiemanting, Manting, Xie, Computational and Applied Mathematics, Eigenvalue, TJU, Finite Element">
   <meta name="author" content="Manting Xie" />
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="">
 
-  <!-- 使用CDN加载w3.css确保稳定性 -->
+  <!-- 引入外部资源 -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <!-- 加载谷歌字体 -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500&family=Oswald:wght@500;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
   <style type="text/css">
-    /* 基础样式优化 */
-    .w3-sidebar a {font-family: "Roboto", sans-serif}
-    body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-    span.chinese{font-size: 100%;}
+    /* 全局样式重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 基础字体配置 */
+    .w3-sidebar a {font-family: "Roboto", sans-serif; font-size: 14px !important;}
+    body, h1, h2, h3, h4, h5, h6, .w3-wide {font-family: "Montserrat", sans-serif;}
+    .chinese {font-size: 100%;}
     
-    /* 自定义主题色 - 更专业的靛蓝色调 */
+    /* 自定义配色方案（优化的靛蓝主色调） */
     :root {
-      --primary-color: #2E4057;      /* 主色 - 深蓝灰 */
-      --secondary-color: #4A6FA5;    /* 次要色 - 中蓝 */
-      --accent-color: #6B8EAF;       /* 强调色 - 浅蓝 */
-      --light-bg: #F8FAFC;           /* 浅色背景 */
-      --dark-text: #2D3748;          /* 深色文本 */
-      --light-text: #F7FAFC;         /* 浅色文本 */
+      --primary-color: #3f51b5;      /* 主靛蓝 */
+      --primary-light: #757de8;      /* 浅靛蓝 */
+      --primary-dark: #002984;       /* 深靛蓝 */
+      --secondary-color: #f5f5f5;    /* 浅灰背景 */
+      --text-dark: #333333;          /* 深色文本 */
+      --text-light: #ffffff;         /* 浅色文本 */
+      --accent-color: #ff4081;       /* 强调色（粉色） */
+      --link-color: #447ec9;         /* 链接色 */
+      --hover-color: #5c6bc0;        /* 悬停色 */
+      --border-color: #e0e0e0;       /* 边框色 */
     }
-    
-    /* 覆盖w3.css样式 */
-    .w3-indigo {background-color: var(--primary-color)!important; color: var(--light-text)!important;}
-    .w3-light-grey {background-color: var(--light-bg)!important;}
-    
-    /* 通用样式优化 */
-    body {
-      color: var(--dark-text);
-      line-height: 1.6;
-    }
-    
-    h2 {
-      color: var(--primary-color);
-      border-bottom: 2px solid var(--accent-color);
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
-    
-    h3 {
-      color: var(--secondary-color);
-      font-weight: 500;
-      margin-top: 25px;
-      margin-bottom: 15px;
-    }
-    
-    /* 卡片式容器 */
-    .content-card {
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      transition: box-shadow 0.3s ease;
-      margin-bottom: 25px;
-      overflow: hidden;
-    }
-    
-    .content-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    }
-    
-    /* 链接样式优化 */
-    a {
-      color: var(--secondary-color);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    
-    a:hover {
-      color: var(--primary-color);
-      text-decoration: underline;
-    }
-    
-    /* 侧边栏优化 */
+
+    /* 侧边栏优化 - 核心改进 */
     #mySidebar {
-      background-color: var(--primary-color)!important;
+      background-color: var(--primary-color) !important;
       box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      width: 180px !important;
+      overflow-y: auto; /* 侧边栏内容过多时可滚动 */
+      max-height: 100vh; /* 限制侧边栏高度 */
+    }
+    
+    #mySidebar .w3-display-container {
+      position: sticky;
+      top: 0;
+      background-color: var(--primary-color);
+      z-index: 1;
+      padding-bottom: 8px;
     }
     
     #mySidebar .w3-bar-item {
       transition: all 0.2s ease;
-      border-left: 3px solid transparent;
+      border-radius: 4px;
+      margin: 0 4px 4px 4px !important;
+      padding: 8px 10px !important;
+      white-space: nowrap;
+      color: var(--text-light) !important;
+    }
+    
+    #mySidebar .w3-bar-item i {
+      width: 20px;
+      text-align: center;
+      margin-right: 6px !important;
     }
     
     #mySidebar .w3-bar-item:hover {
-      background-color: var(--secondary-color)!important;
-      border-left: 3px solid var(--accent-color);
+      background-color: var(--hover-color) !important;
+      transform: translateX(2px);
     }
     
-    /* 头像样式优化 */
-    .profile-img {
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+    #mySidebar h3 {
+      color: var(--text-light);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      font-size: 16px !important;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* 顶部导航优化（小屏幕） */
+    .w3-top {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     
+    .w3-top .w3-button {
+      color: var(--text-light) !important;
+      transition: background-color 0.2s ease;
+    }
+    
+    .w3-top .w3-button:hover {
+      background-color: var(--hover-color) !important;
+    }
+    
+    .w3-top .w3-bar-item {
+      color: var(--text-light) !important;
+      font-weight: 500;
+    }
+
+    /* 主内容区优化 */
+    .w3-main {
+      margin-left: 180px !important;
+      padding: 0 24px;
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* 区块样式优化 - 增强视觉效果 */
+    .section-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      padding: 32px !important;
+      margin-bottom: 30px !important;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+    
+    .section-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .section-card h2 {
+      color: var(--primary-dark);
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      display: inline-block;
+      font-weight: 600;
+      font-size: 24px;
+    }
+    
+    .section-card h3 {
+      color: var(--primary-color);
+      margin: 24px 0 16px 0;
+      font-weight: 500;
+      font-size: 18px;
+      position: relative;
+      padding-left: 12px;
+    }
+    
+    .section-card h3::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 4px;
+      height: 16px;
+      background-color: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    /* 个人信息区优化 - 更精致的排版 */
+    #home {
+      padding: 40px 32px !important;
+      text-align: left !important;
+    }
+    
+    #home .profile-photo {
+      float: left;
+      width: 220px;
+      max-width: 100%;
+      border-radius: 12px;
+      margin-right: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+    
+    #home .profile-photo:hover {
+      transform: scale(1.02);
+    }
+    
+    #home .profile-info {
+      overflow: hidden;
+      padding-top: 8px;
+    }
+    
+    #home .profile-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 38px;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    
+    #home .profile-contact {
+      line-height: 2;
+      margin-top: 20px;
+      font-size: 15px;
+    }
+    
+    #home .profile-links {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    #home .profile-links a {
+      color: var(--link-color);
+      text-decoration: none;
+      margin-right: 20px;
+      transition: all 0.2s ease;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    #home .profile-links a:hover {
+      color: var(--accent-color);
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+    
+    #home .profile-links a i {
+      margin-right: 8px;
+      font-size: 1.2em;
+      vertical-align: middle;
+    }
+    
+    /* Mathscinet 自定义图标优化 */
+    .mathscinet-icon {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      margin-right: 8px !important;
+      vertical-align: middle;
+    }
+
     /* 列表样式优化 */
     ul, ol {
-      padding-left: 20px;
-      margin-bottom: 15px;
+      margin-left: 28px;
+      line-height: 1.8;
+      font-size: 15px;
     }
     
     li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      padding-left: 8px;
     }
     
-    /* 出版列表样式 */
     .publication-item {
       margin-bottom: 20px;
-      padding-left: 10px;
-      border-left: 3px solid var(--accent-color);
+      padding-left: 12px;
+      border-left: 3px solid var(--primary-light);
+      padding-bottom: 8px;
     }
     
-    /* 移动端适配优化 */
-    @media (max-width: 768px) {
+    .publication-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .publication-item a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+    
+    .publication-item a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    /* 链接样式全局优化 */
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+    
+    /* 新闻区块特殊样式 */
+    #news ul li {
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    #news ul li::before {
+      content: "•";
+      color: var(--primary-color);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    
+    #news a {
+      font-weight: 500;
+    }
+
+    /* 页脚样式优化 */
+    footer {
+      background-color: var(--primary-dark);
+      color: var(--text-light);
+      padding: 32px 24px;
+      text-align: center;
+      margin-top: 40px;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+    
+    footer a {
+      color: #bbdefb;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+    
+    footer a:hover {
+      color: var(--text-light);
+    }
+    
+    footer p {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    /* 响应式适配优化 - 更精细的断点控制 */
+    @media (max-width: 992px) {
       .w3-main {
-        margin-left: 0!important;
+        margin-left: 0 !important;
+        padding: 0 16px;
       }
       
-      .profile-img {
-        margin: 0 auto 20px auto;
+      #mySidebar {
+        width: 240px !important;
+        position: fixed !important;
+        right: 0 !important;
+        top: 0 !important;
+      }
+      
+      #home {
+        text-align: center !important;
+        padding: 32px 16px !important;
+      }
+      
+      #home .profile-photo {
+        float: none;
+        margin: 0 auto 24px auto;
         display: block;
-        float: none!important;
+        max-width: 200px;
       }
       
+      #home .profile-info {
+        text-align: center;
+      }
+      
+      #home .profile-name {
+        font-size: 32px;
+      }
+      
+      #home .profile-links a {
+        display: inline-flex;
+        margin: 10px 10px 0 10px;
+      }
+      
+      .section-card {
+        padding: 24px 16px !important;
+        margin-bottom: 20px !important;
+      }
+      
+      .section-card h2 {
+        font-size: 20px;
+      }
+      
+      ul, ol {
+        margin-left: 20px;
+      }
+    }
+    
+    @media (max-width: 600px) {
       .w3-top {
-        position: fixed!important;
-        width: 100%!important;
-        z-index: 4!important;
+        position: fixed !important;
+        width: 100% !important;
+        z-index: 4 !important;
       }
       
       .w3-hide-large {
-        margin-top: 70px!important;
+        margin-top: 70px !important;
+      }
+      
+      #home .profile-name {
+        font-size: 28px;
+      }
+      
+      #home .profile-links a {
+        display: block;
+        margin: 8px auto;
+        max-width: 280px;
+      }
+      
+      footer {
+        padding: 24px 16px;
       }
     }
+
+    /* 平滑滚动和页面加载优化 */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 20px;
+    }
     
-    /* 修复汉堡菜单按钮样式 */
-    .menu-btn {
-      font-stretch: expanded!important;
-      font-weight: bold!important;
+    body {
+      background-color: #f9f9f9;
+      line-height: 1.6;
     }
     
     /* 统计计数器样式优化 */
     .statcounter {
-      margin: 0 auto;
+      margin: 30px auto;
+      text-align: center;
+      padding: 16px;
+      background-color: var(--secondary-color);
+      border-radius: 8px;
+      max-width: 300px;
+    }
+    
+    /* 加载动画 */
+    .w3-content {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    
+    /* 修复w3css的overlay样式 */
+    #myOverlay {
+      background-color: rgba(0,0,0,0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+    
+    /* 修复iOS上的点击高亮 */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* 打印样式优化 */
+    @media print {
+      #mySidebar, .w3-top, #myOverlay, .statcounter {
+        display: none !important;
+      }
+      
+      .w3-main {
+        margin-left: 0 !important;
+        padding: 0 !important;
+      }
+      
+      .section-card {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 16px 0 !important;
+      }
+      
+      footer {
+        display: none !important;
+      }
     }
   </style>
   
   <link rel="icon" type="image/png" href="images/icons.png">
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-  $(document).ready(function(){
-    // 平滑滚动
-    $("a").on('click', function(event) {
-      if (this.hash !== "") {
-        event.preventDefault();
-        var hash = this.hash;
-        
-        // 移动端关闭侧边栏
-        if ($(window).width() < 769) {
-          w3_close();
-        }
-        
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top - 20 // 偏移20px避免内容被遮挡
-        }, 800, function(){
-          window.location.hash = hash;
-        });
-      }
-    });
-  });
-  </script>
+  <!-- 预加载关键资源 -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500&family=Oswald:wght@500;600&display=swap" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
 </head>
 
-<body class="w3-content" style="max-width:1000px">
+<body class="w3-content" style="max-width:1200px;margin:0 auto;background-color:#f9f9f9">
 
-<!-- 侧边栏/菜单 -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-right" style="z-index:3;width:150px" id="mySidebar">
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-right" style="z-index:3;" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <h3><b>MT XIE</b></h3>
     <!-- 移动端关闭按钮 -->
-    <span onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="font-size:20px">×</span>
+    <span onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="position:absolute;top:16px;right:16px;color:white;font-size:20px;">×</span>
   </div>
-  <div class="w3-padding-64 w3-text-light-grey w3-large" style="font-weight:bold">
-    <a href="#home" class="w3-bar-item w3-button">Home</a>
-    <a href="#cv" class="w3-bar-item w3-button">Brief CV</a>
-    <a href="#publications" class="w3-bar-item w3-button">Publications</a>
-    <a href="#grants" class="w3-bar-item w3-button">Grants</a>
-    <a href="#teaching" class="w3-bar-item w3-button">Teaching</a>
-    <a href="#supervision" class="w3-bar-item w3-button">Supervision</a>
-    <a href="#uselink" class="w3-bar-item w3-button">Useful Links</a>
-    <a href="chinese.php" class="w3-bar-item w3-button">中文版</a>
+  <div class="w3-padding-64 w3-text-light-grey w3-large" style="font-weight:bold;">
+    <a href="#home" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
+    <a href="#cv" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Brief CV</a>
+    <a href="publications.php" class="w3-bar-item w3-button"><i class="fa fa-book"></i> Publications</a>
+    <a href="#grants" class="w3-bar-item w3-button"><i class="fa fa-money-bill"></i> Grants</a>
+    <a href="#teaching" class="w3-bar-item w3-button"><i class="fa fa-chalkboard-teacher"></i> Teaching</a>
+    <a href="#group" class="w3-bar-item w3-button"><i class="fa fa-users"></i> Group</a>
+    <a href="#uselink" class="w3-bar-item w3-button"><i class="fa fa-link"></i> Useful Links</a>
+    <a href="chinese.php" class="w3-bar-item w3-button"><i class="fa fa-language"></i> 中文版</a>
   </div>
 </nav>
 
-<!-- 小屏幕顶部菜单 -->
-<header class="w3-bar w3-top w3-hide-large w3-indigo w3-xlarge">
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-indigo w3-ripple w3-left menu-btn" onclick="w3_open()">
+<!-- Top menu on small screens -->
+<header class="w3-bar w3-top w3-hide-large w3-xlarge">
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-ripple w3-left" onclick="w3_open()">
     <b>&#9776;</b>
   </a>
   <div class="w3-bar-item w3-padding-24"> <b>Manting Xie </b> </div>
 </header>
 
-<!-- 小屏幕侧边栏遮罩 -->
+<!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-<!-- 主内容区 -->
-<div class="w3-main" style="margin-left:150px">
-  <!-- 小屏幕内容下移 -->
+<!-- !PAGE CONTENT! -->
+<div class="w3-main">
+  <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
 
-  <!-- Home 部分 -->
-  <div class="w3-container w3-center w3-padding-32 content-card" id="home">
-    <img class="profile-img" style="width: 80%;max-width: 220px" alt="profile photo" src="./images/mtxie.jpg">
-    
-    <div style="font-family: 'Montserrat', sans-serif; font-size: 35px; font-weight: 700;"><b>Manting XIE</b> (谢满庭)</div>
-    <h4 style="font-size: 18px; margin: 15px 0;">
-      <strong>Associate Professor</strong>
-    </h4>
-    <p>
-      <a href="https://math.tju.edu.cn/" target="_blank">School of Mathematics</a>,
-      <a href="http://www.tju.edu.cn/english/index.htm" target="_blank">Tianjin University</a>
-    </p>
-    <p><strong>Office:</strong> Room 403, Building 58</p>
-    <p><strong>Address:</strong> No. 135, Ya Guan Road, Jinnan District, Tianjin 300350, China</p>
-    <p><strong>Email:</strong> mtxie@tju.edu.cn, xiemanting@lsec.cc.ac.cn</p>
-    
-    <p class="w3-center" style="margin-top: 20px;">
-      <a href="https://scholar.google.com/citations?user=-kq-FyoAAAAJ&hl=en" target="_blank">Google Scholar</a> &nbsp/&nbsp
-      <a href="https://mathscinet.ams.org/mathscinet/author?authorId=1157382" target="_blank"> Mathscinet</a> &nbsp/&nbsp
-      <a href="https://www.researchgate.net/profile/Manting-Xie" target="_blank">Resarch Gate</a>&nbsp/&nbsp
-      <a href="https://orcid.org/0000-0003-3437-9576" target="_blank"> ORCID</a>
-    </p>
+  <!-- The Home Section -->
+  <div class="section-card w3-container" id="home">
+    <img src="./images/mtxie.jpg" alt="profile photo" class="profile-photo" loading="lazy">
+    <div class="profile-info">
+      <div class="profile-name"><b>Manting XIE</b> (谢满庭)</div>
+      <h4 style="font-size: 18px;margin-bottom: 16px;font-weight: 500;">
+        <strong><a href="https://math.tju.edu.cn/info/1715/5579.htm" target="_blank">Associate Professor</a></strong>
+      </h4>
+      <p style="font-size: 15px;">
+        <a href="https://math.tju.edu.cn/" target="_blank">School of Mathematics</a>,
+        <a href="http://www.tju.edu.cn/english/index.htm" target="_blank">Tianjin University</a>
+      </p>
+      <div class="profile-contact">
+        <p><strong>Office:</strong> Room 403, Building 58</p>
+        <p><strong>Address:</strong> No. 135, Ya Guan Road, Jinnan District, Tianjin 300350, China</p>
+        <p><strong>Email:</strong> mtxie@tju.edu.cn, xiemanting@lsec.cc.ac.cn</p>
+      </div>
+      <!-- 优化的链接区域 -->
+      <div class="profile-links">
+        <a href="https://scholar.google.com/citations?user=-kq-FyoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-google-scholar"></i> Google Scholar
+        </a>
+        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=1157382" target="_blank" rel="noopener noreferrer">
+          <span class="mathscinet-icon"></span> Mathscinet
+        </a>
+        <a href="https://www.researchgate.net/profile/Manting-Xie" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-researchgate"></i> Research Gate
+        </a>
+        <a href="https://orcid.org/0000-0003-3437-9576" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-orcid"></i> ORCID
+        </a>
+      </div>
+    </div>
   </div>
 
-  <!-- CV 部分 -->
-  <div class="w3-container w3-padding-32 content-card" id="cv">
-    <h2><strong>Brief CV</strong></h2>
+  <!-- The News Section -->
+  <div class="section-card w3-container" id="news">
+    <h2><strong>Latest News</strong></h2>
     
+    <!-- 2026年新闻 -->
+    <h3><strong>2026</strong></h3>
+    <ul>
+      <li>Our paper <a href="./files/1Bogoliubov/2026-MMS.pdf" target="_blank" rel="noopener noreferrer">"A structure-preserving Fourier spectral method for computing the Bogoliubov-de Gennes excitations of spin-1 Bose-Einstein Condensates"</a> has been accepted by <em>Multiscale Model. Simul.</em></li>
+      <li>Our paper <a href="./files/3EP/2026-SINUM.pdf" target="_blank" rel="noopener noreferrer">"A novel augmented subspace adaptive finite element method for the eigenvalue problem with discontinuous coefficients"</a> has been accepted by <em>SIAM J. Numer. Anal.</em></li>
+      <li>Our paper <a href="./files/1Bogoliubov/2026-JCP.pdf" target="_blank" rel="noopener noreferrer">"Computing the Bogoliubov-de Gennes excitations of two-component Bose-Einstein condensates"</a> has been accepted by <em>J. Comput. Phys.</em></li>
+    </ul>
+    
+    <!-- 2025年新闻 -->
+    <h3><strong>2025</strong></h3>
+    <ul>
+      <li>We have obtained the National Natural Science Foundation of China (NSFC) General Program (No. 12571437).</li>
+    </ul>
+  </div>
+
+  <!-- The CV Section -->
+  <div class="section-card w3-container" id="cv">
+    <h2><strong>Brief CV</strong></h2>
     <h3><strong>Education</strong></h3>
-    <ul style="list-style-type: none; padding-left: 0;">
-      <li>2012/09-2017/06 &nbsp; <a href="http://icmsec.cc.ac.cn/en/" target="_blank">Institute of Computational Mathematics</a>, <a href="https://www.ucas.ac.cn/" target="_blank">University of Chinese Academy of Sciences</a>, &nbsp; <strong>Ph.D.</strong>, &nbsp; Supervisor: Academician <a href="http://lsec.cc.ac.cn/~linq/english_version.html" target="_blank">Qun Lin</a> and Prof. <a href="http://lsec.cc.ac.cn/~hhxie/" target="_blank">Hehu Xie</a></li>
-      <li>2008/09-2012/06 &nbsp; School of Mathematical Sciences, <a href="http://english.sdnu.edu.cn/" target="_blank">Shandong Normal University</a>, &nbsp; <strong>BSc</strong></li>
-      <li>2005/09-2008/06 &nbsp; Hebei Changli No.1 Middle School</li>
+    <ul>
+      <li>2012/09-2017/06 &nbsp; <a href="http://icmsec.cc.ac.cn/en/" target="_blank" rel="noopener noreferrer">Institute of Computational Mathematics</a>, <a href="https://www.ucas.ac.cn/" target="_blank" rel="noopener noreferrer">University of Chinese Academy of Sciences</a>, &nbsp; <strong>Ph.D.</strong>, &nbsp; Supervisor: Academician <a href="http://lsec.cc.ac.cn/~linq/english_version.html" target="_blank" rel="noopener noreferrer">Qun Lin</a> and Prof. <a href="http://lsec.cc.ac.cn/~hhxie/" target="_blank" rel="noopener noreferrer">Hehu Xie</a></li>
+      <li>2008/09-2012/06 &nbsp; School of Mathematical Sciences, <a href="http://english.sdnu.edu.cn/" target="_blank" rel="noopener noreferrer">Shandong Normal University</a>, &nbsp; <strong>BSc</strong></li>
     </ul>
 
     <h3><strong>Work Experience</strong></h3>
-    <ul style="list-style-type: none; padding-left: 0;">
-      <li>2025/04-Now &nbsp; Associate Professor, &nbsp; School of Mathematics, Tianjin University, China.</li>
-      <li>2023/07-2025/03 &nbsp; Associate Professor, &nbsp; Center for Applied Mathematics, Tianjin University, China.</li>
-      <li>2017/07-2023/06 &nbsp; Assistant Professor, &nbsp; Center for Applied Mathematics, Tianjin University, China.</li>
+    <ul>
+      <li>2025/04-Now &nbsp; Associate Professor, &nbsp; School of Mathematics, Tianjin University, &nbsp; China.</li>
+      <li>2023/07-2025/03 &nbsp; Associate Professor, &nbsp; Center for Applied Mathematics, Tianjin University, &nbsp; China.</li>
+      <li>2017/07-2023/06 &nbsp; Assistant Professor, &nbsp; Center for Applied Mathematics, Tianjin University, &nbsp; China.</li>
     </ul>
 
-    <h3><strong>Research</strong></h3>
-    <ul style="list-style-type: none; padding-left: 0;">
+    <h3><strong>Research Interests</strong></h3>
+    <ul>
       <li>Mathematics and numerics in Bose-Einstein Condensates</li>
       <li>Numerical methods for Eigenvalue problems in PDE</li>
       <li>Finite element method, approximation theory and applications</li>
@@ -276,168 +609,34 @@ header("Content-type: text/html; charset=utf-8");
     </ul>
   </div>
 
-  <!-- News 部分 -->
-  <div class="w3-container w3-padding-32 content-card" id="news">
-    <h2><strong>News!!!</strong></h2>
-    <p><li> Our papers have been accepted by <em>Multiscale Model. Simul.</em>, <em>SIAM J. Numer. Anal.</em> & <em>J. Comput. Phys.</em> in 2026.</li></p>
-  </div>
+  <!-- 引入Publications.php文件 -->
+  <?php 
+    // 容错处理：如果文件不存在则显示提示
+    if (file_exists("Publications.php")) {
+      include "Publications.php";
+    } else {
+      echo '<div class="section-card w3-container" id="publications">
+              <h2><strong>Publications</strong></h2>
+              <p>Publications content is being updated. Please check back later.</p>
+            </div>';
+    }
+  ?>
 
-  <!-- Publications 部分 -->
-  <div class="w3-container w3-padding-32 content-card" id="publications">
-    <h2><strong>Publications</strong></h2>
-
-    <h3><strong>Preparation</strong></h3>
-    <ol>
-      <li class="publication-item">
-        <strong>An efficient and spectrally-accurate solver for computing the Bogoliubov-de Gennes excitations of rotating Bose-Einstein condensates</strong><br>
-        Li, Yu; <strong>Xie, Manting</strong>; Zhang, Shaobo; Zhang, Yong.
-      </li>
-      <li class="publication-item">
-        <strong>Augmented subspace adaptive finite element method for computing band gaps of photonic crystals</strong><br>
-        Yue, Meiling; Xie, Hehu; <strong>Xie, Manting</strong>*.
-      </li>
-    </ol>
-
-    <h3><strong>Published</strong></h3>
-    
-    <strong style="font-size: 18px; color: var(--primary-color);">Bogoliubov-de Gennes excitations</strong><br><br>
-    <ol>
-      <li class="publication-item">
-        <strong><a href="./files/1Bogoliubov/2026-MMS.pdf" target="_blank">A structure-preserving Fourier spectral method for computing the Bogoliubov-de Gennes excitations of spin-1 Bose-Einstein Condensates</a></strong><br>
-        Li, Yu; Li, Zhixuan; <strong>Xie, Manting</strong>*; Zhang, Yong<br>
-        <em>Multiscale Model. Simul.</em>, accepted, 2026.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/1Bogoliubov/2026-JCP.pdf" target="_blank">Computing the Bogoliubov-de Gennes excitations of two-component Bose-Einstein condensates</a></strong><br>
-        <strong>Xie, Manting</strong>; Zhang, Yong<br>
-        <em>J. Comput. Phys.</em>, 556 (2026), Paper No. 114813, 18 pp.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/1Bogoliubov/2022-SISC.pdf" target="_blank">A spectrally accurate numerical method for computing the Bogoliubov-de Gennes excitations of dipolar Bose-Einstein condensates</a></strong><br>
-        Tang, Qinglin; <strong>Xie, Manting</strong>; Zhang, Yong; Zhang, Yuqing<br>
-        <em>SIAM J. Sci. Comput.</em>, 44 (2022), no. 1, B100-B121.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/1Bogoliubov/2021-EAJAM.pdf" target="_blank">Efficient and accurate computation of the Bogoliubov-de Gennes excitations for the quasi-2D dipolar Bose-Einstein condensates</a></strong><br>
-        Zhang, Yuqing; Liu, Xin; <strong>Xie, Manting</strong>*<br>
-        <em>East Asian J. Appl. Math.</em>, 11 (2021), no. 4, 686-707.
-      </li>
-    </ol>
-    
-    <strong style="font-size: 18px; color: var(--primary-color);">The ground states of Bose-Einstein condensates</strong><br><br>
-    <ol>
-      <li class="publication-item">
-        <strong><a href="./files/2BEC/2023-JSC-Xie.pdf" target="_blank">An efficient adaptive mesh redistribution method for nonlinear eigenvalue problems in Bose-Einstein condensates</a></strong><br>
-        Xie, Hehu; <strong>Xie, Manting</strong>*; Yin, Xiaobo; Zhao, Gang<br>
-        <em>J. Sci. Comput.</em>, 94 (2023), no. 2, Paper No. 37, 20 pp.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/2BEC/2021-BIT.pdf" target="_blank">A multigrid method for the ground state solution of Bose-Einstein condensates based on Newton iteration</a></strong><br>
-        Xu, Fei; Xie, Hehu; <strong>Xie, Manting</strong>; Yue, Meiling<br>
-        <em>BIT</em>, 61 (2021), no. 2, 645-663.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/2BEC/2019-JSC.pdf" target="_blank">Computable error estimates for ground state solution of Bose-Einstein condensates</a></strong><br>
-        Xie, Hehu; <strong>Xie, Manting</strong>*<br>
-        <em>J. Sci. Comput.</em>, 81 (2019), no. 2, 1072-1087.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/2BEC/2016-CICP.pdf" target="_blank">A multigrid method for ground state solution of Bose-Einstein condensates</a></strong><br>
-        Xie, Hehu; <strong>Xie, Manting</strong><br>
-        <em>Commun. Comput. Phys.</em>, 19 (2016), no. 3, 648-662.
-      </li>
-    </ol>
-    
-    <strong style="font-size: 18px; color: var(--primary-color);">Eigenvalue problems and nonlinear problems</strong><br><br>
-    <ol>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2026-SINUM.pdf" target="_blank">A novel augmented subspace adaptive finite element method for the eigenvalue problem with discontinuous coefficients</a></strong><br>
-        <strong>Xie, Manting</strong>; Yue, Meiling<br>
-        <em>SIAM J. Numer. Anal.</em>, accepted, 2026.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2023-NA.pdf" target="_blank">Local and parallel multigrid method for semilinear Neumann problem with nonlinear boundary condition</a></strong><br>
-        Xu, Fei; Wang, Bingyi; <strong>Xie, Manting</strong>*<br>
-        <em>Numer. Algorithms</em>, doi: https://doi.org/10.1007/s11075-023-01643-5.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2023-CAMWA.pdf" target="_blank">A posteriori and superconvergence error analysis for finite element approximation of the Steklov eigenvalue problem</a></strong><br>
-        Xiong, Chunguang; <strong>Xie, Manting</strong>*; Luo, Fusheng; Su, Hongling<br>
-        <em>Comput. Math. Appl.</em>, 144 (2023), 90-99.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2023-JSC-Xu.pdf" target="_blank">Multigrid method for nonlinear eigenvalue problems based on Newton iteration</a></strong><br>
-        Xu, Fei; <strong>Xie, Manting</strong>; Yue, Meiling<br>
-        <em>J. Sci. Comput.</em>, 94 (2023), no. 2, Paper No. 42, 21 pp.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2022-BIT.pdf" target="_blank">An efficient adaptive multigrid method for the elasticity eigenvalue problem</a></strong><br>
-        Xu, Fei; Huang, Qiumei; <strong>Xie, Manting</strong>*<br>
-        <em>BIT</em>, 62 (2022), no. 4, 2005-2033.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2022-JSC.pdf" target="_blank">A new family of mixed method for the biharmonic eigenvalue problem based on the first order equations of Hellan-Herrmann-Johnson type</a></strong><br>
-        Li, Yu; <strong>Xie, Manting</strong>; Xiong, Chunguang<br>
-        <em>J. Sci. Comput.</em>, 93 (2022), no. 3, Paper No. 66, 23 pp.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2022-JCAM.pdf" target="_blank">Convergence and optimality of adaptive multigrid method for multiple eigenvalue problems</a></strong><br>
-        Xu, Fei; <strong>Xie, Manting</strong>; Huang, Qiumei; Yue, Meiling; Ma, Hongkun<br>
-        <em>J. Comput. Appl. Math.</em>, 415 (2022), Paper No. 114450, 20 pp.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2022-AICM.pdf" target="_blank">A multilevel Newton's method for the Steklov eigenvalue problem</a></strong><br>
-        Yue, Meiling; Xu, Fei; <strong>Xie, Manting</strong>*<br>
-        <em>Adv. Comput. Math.</em>, 48 (2022), no. 3, Paper No. 33, 29 pp.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2021-ESAIM.pdf" target="_blank">A type of full multigrid method for non-selfadjoint Steklov eigenvalue problems in inverse scattering</a></strong><br>
-        <strong>Xie, Manting</strong>; Xu, Fei; Yue, Meiling<br>
-        <em>ESAIM Math. Model. Numer. Anal.</em>, 55 (2021), no. 5, 1779-1802.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2020-AML.pdf" target="_blank">Adaptive time-stepping algorithms for molecular beam epitaxy: based on energy or roughness</a></strong><br>
-        Luo, Fusheng; Xie, Hehu; <strong>Xie, Manting</strong>; Xu, Fei<br>
-        <em>Appl. Math. Lett.</em>, 99 (2020), 105991, 8 pp.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2019-JNMCA.pdf" target="_blank">An efficient multigrid method for semilinear elliptic problems</a></strong> (in Chinese)<br>
-        Xie, Hehu; <strong>Xie, Manting</strong>; Zhang, Ning<br>
-        <em>J. Numer. Methods Comput. Appl.</em>, 146 (2019), 55-72.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2018-JJIAMs.pdf" target="_blank">Explicit lower bounds for Stokes eigenvalue problems by using nonconforming finite elements</a></strong><br>
-        <strong>Xie, Manting</strong>; Xie, Hehu; Liu, Xuefeng<br>
-        <em>Jpn. J. Ind. Appl. Math.</em>, 35 (2018), no. 1, 335-354.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2017-EAJAM.pdf" target="_blank">Computable error estimates for a nonsymmetric eigenvalue problem</a></strong><br>
-        Xie, Hehu; <strong>Xie, Manting</strong>; Yin, Xiaobo; Yue, Meiling<br>
-        <em>East Asian J. Appl. Math.</em>, 7 (2017), no. 3, 583-602.
-      </li>
-      <li class="publication-item">
-        <strong><a href="./files/3EP/2016-SCM.pdf" target="_blank">A full multigrid method for nonlinear eigenvalue problems</a></strong><br>
-        Jia, Shanghui; Xie, Hehu; <strong>Xie, Manting</strong>; Xu, Fei<br>
-        <em>Sci. China Math.</em>, 59 (2016), no. 10, 2037-2048.
-      </li>
-    </ol>
-  </div>
-
-  <!-- Grants 部分 -->
-  <div class="w3-container w3-padding-32 content-card" id="grants">
-    <h2><strong>Grants</strong></h2>
-    <ul style="list-style-type: none; padding-left: 0;">
-      <li>2026/01-2029/12, Theoretical analysis and numerical methods for eigenvalue problems in spin-orbit-coupled dipolar Bose-Einstein condensatess, NSFC, No.12571437, (PI)</li>
+  <!-- The Grants Section -->
+  <div class="section-card w3-container" id="grants">
+    <h2><strong>Research Grants</strong></h2>
+    <ul>
+      <li>2026/01-2029/12, Theoretical analysis and numerical methods for eigenvalue problems in spin-orbit-coupled dipolar Bose-Einstein condensates, NSFC, No.12571437, (PI)</li>
       <li>2023/01-2026/12, Mathematical analysis and numerical methods for the droplet dipolar Bose-Einstein Condensates, NSFC, No.12271400, (Co-PI)</li>
       <li>2021/01-2023/12, Research on the efficient finite element methods for steady states of rotating dipolar Bose-Einstein Condensates, NSFC, No.12001402, (PI)</li>
       <li>2021/01-2024/12, Operator Splitting Methods for Several Classes of Inverse Coefficients of Partial Differential Equations, NSFC, No.12071343, (Co-PI)</li>
     </ul>
   </div>
 
-  <!-- Teaching 部分 -->
-  <div class="w3-container w3-padding-32 content-card" id="teaching">
+  <!-- The Teaching Section -->
+  <div class="section-card w3-container" id="teaching">
     <h2><strong>Teaching</strong></h2>
-    <h3><strong>Undergraduate</strong></h3>
+    <h3><strong>Undergraduate Courses</strong></h3>
     <ul>
       <li>Calculus I @ Tianjin University (TJU), 96 class hours, 2025 autumn</li>
       <li>Numerical Linear Algebra @ Tianjin University (TJU), 48 class hours, 2025 autumn</li>
@@ -452,113 +651,196 @@ header("Content-type: text/html; charset=utf-8");
       <li>Probability theory @TJU, 32 class hours, 2017 autumn</li>
     </ul>
 
-    <h3><strong>Postgraduate</strong></h3>
+    <h3><strong>Postgraduate Courses</strong></h3>
     <ul>
       <li>Fundamentals of Engineering Mathematics @TJU, 80 class hours, 2018 spring</li>
     </ul>
   </div>
 
-  <!-- Supervision 部分 -->
-  <div class="w3-container w3-padding-32 content-card" id="supervision">
-    <h2><strong>Supervision</strong></h2>
-    <h3><strong>Master’s Student Supervision</strong></h3>
+  <!-- The Group Section -->
+  <div class="section-card w3-container" id="group">
+    <h2><strong>Collaborators and Students</strong></h2>
+    
+    <!-- 第一部分：Collaborators 合作者 -->
+    <h3><strong>Collaborators</strong></h3>
     <ul>
-      <li>2025, Yiyang Ji & Jiameng CAO & Lingqi ZHANG @TJU</li>
+      <li>Yu Li (Lecturer, Tianjin University of Finance and Economics)</li>
+      <li>Qinglin Tang (Professor, Sichuan University)</li>
+      <li>Hehu Xie (Professor, Institute of Computational Mathematics, CAS)</li>
+      <li>Fei Xu (Associate Professor, Beijing University of Technology)</li>
+      <li>Meiling Yue (Associate Professor, Beijing Technology and Business University)</li>
+      <li>Yong Zhang (Professor, Tianjin University)</li>
+    </ul>
+
+    <!-- 第二部分：Graduate Students 研究生 -->
+    <h3><strong>Graduate Students</strong></h3>
+    <ul>
+      <li>2025, Yiyang JI & Jiameng CAO & Lingqi ZHANG @TJU</li>
       <li>2024, Yi DING & Jie GAO @TJU</li>
     </ul>
 
-    <h3><strong>Undergraduate theses</strong></h3>
+    <!-- 第三部分：Cooperant Students 合作培养学生 -->
+    <h3><strong>Cooperant Students</strong></h3>
+    <ul>
+      <li>Shaobo Zhang (Sichuan University)</li>
+      <li>Xin Liu (East China Institute of Technology)</li>
+      <li>Zhixuan Li (Sichuan University)</li>
+    </ul>
+
+    <!-- 第四部分：Undergraduate Students 本科生 -->
+    <h3><strong>Undergraduate Students</strong></h3>
     <ul>
       <li>2025, Zhehan Wang & Haoyu Jin @TJU</li>
-      <li>2024, Yiyang Ji & Suxiang Wu @TJU</li>
+      <li>2024, Yiyang JI & Suxiang Wu @TJU</li>
       <li>2023, Hongwei FAN @TJU</li>
       <li>2022, Yuankun SHI & Qianlong LIU @TJU</li>
       <li>2021, Yun HAO & Caiqi LI @TJU</li>
     </ul>
   </div>
 
-  <!-- Useful Links 部分 -->
-  <div class="w3-container w3-padding-32 content-card" id="uselink">
+  <!-- The Useful Links Section -->
+  <div class="section-card w3-container" id="uselink">
     <h2><strong>Useful Links</strong></h2>
-    <h3><strong>Journals</strong></h3>
-    <p>
-      <a href="https://www.siam.org/publications/journals/siam-review-sirev" target="_blank">SIREV</a> &nbsp;&nbsp;
-      <a href="https://www.cambridge.org/core/journals/acta-numerica" target="_blank">Acta Numer.</a> &nbsp;&nbsp;
-      <a href="https://www.siam.org/publications/journals/siam-journal-on-scientific-computing-sisc" target="_blank">SISC</a> &nbsp;&nbsp;
-      <a href="https://www.siam.org/publications/journals/siam-journal-on-numerical-analysis-sinum" target="_blank">SINUM</a> &nbsp;&nbsp;
-      <a href="https://www.springer.com/journal/211" target="_blank">Numer. Math.</a> &nbsp;&nbsp;
-      <a href="https://www.ams.org/journals/mcom/all_issues.html?active=allissues" target="_blank">Math. Comp.</a> &nbsp;&nbsp;
-      <a href="https://www.worldscientific.com/worldscinet/m3as" target="_blank">M3AS</a> &nbsp;&nbsp;
-      <a href="https://www.siam.org/publications/journals/multiscale-modeling-and-simulation-a-siam-interdisciplinary-journal-mms" target="_blank">MMS</a> &nbsp;&nbsp;
-      <a href="https://www.sciencedirect.com/journal/journal-of-computational-physics" target="_blank">JCP</a> &nbsp;&nbsp;
-      <a href="https://academic.oup.com/imajna?login=true" target="_blank">IMAJNA</a> &nbsp;&nbsp;
-      <a href="https://www.springer.com/journal/10915" target="_blank">JSC</a> &nbsp;&nbsp;
-      <a href="https://www.global-sci.org/jcm" target="_blank">JCM</a> &nbsp;&nbsp;
-      <a href="https://www.global-sci.org/cicp" target="_blank">CiCP</a> &nbsp;&nbsp;
+    <h3><strong>Academic Journals</strong></h3>
+    <p style="font-size: 14px; line-height: 2;">
+      <a href="https://www.siam.org/publications/journals/siam-review-sirev" target="_blank" rel="noopener noreferrer">SIREV</a> &nbsp;&nbsp;
+      <a href="https://www.cambridge.org/core/journals/acta-numerica" target="_blank" rel="noopener noreferrer">Acta Numer.</a> &nbsp;&nbsp;
+      <a href="https://www.siam.org/publications/journals/siam-journal-on-scientific-computing-sisc" target="_blank" rel="noopener noreferrer">SISC</a> &nbsp;&nbsp;
+      <a href="https://www.siam.org/publications/journals/siam-journal-on-numerical-analysis-sinum" target="_blank" rel="noopener noreferrer">SINUM</a> &nbsp;&nbsp;
+      <a href="https://www.springer.com/journal/211" target="_blank" rel="noopener noreferrer">Numer. Math.</a> &nbsp;&nbsp;
+      <a href="https://www.ams.org/journals/mcom/all_issues.html?active=allissues" target="_blank" rel="noopener noreferrer">Math. Comp.</a> &nbsp;&nbsp;
+      <a href="https://www.worldscientific.com/worldscinet/m3as" target="_blank" rel="noopener noreferrer">M3AS</a> &nbsp;&nbsp;
+      <a href="https://www.siam.org/publications/journals/multiscale-modeling-and-simulation-a-siam-interdisciplinary-journal-mms" target="_blank" rel="noopener noreferrer">MMS</a> &nbsp;&nbsp;
+      <a href="https://www.sciencedirect.com/journal/journal-of-computational-physics" target="_blank" rel="noopener noreferrer">JCP</a> &nbsp;&nbsp;
+      <a href="https://academic.oup.com/imajna?login=true" target="_blank" rel="noopener noreferrer">IMAJNA</a> &nbsp;&nbsp;
+      <a href="https://www.springer.com/journal/10915" target="_blank" rel="noopener noreferrer">JSC</a> &nbsp;&nbsp;
+      <a href="https://www.global-sci.org/jcm" target="_blank" rel="noopener noreferrer">JCM</a> &nbsp;&nbsp;
+      <a href="https://www.global-sci.org/cicp" target="_blank" rel="noopener noreferrer">CiCP</a>
     </p>
   </div>
 
-  <!-- 统计计数器 -->
-  <div class="w3-light-grey w3-center w3-padding-24 content-card">
-    <!-- Default Statcounter code -->
+  <!-- Statcounter -->
+  <div class="statcounter">
     <script type="text/javascript">
-    var sc_project=12945687; 
-    var sc_invisible=0; 
-    var sc_security="f1c715c5"; 
-    var scJsHost = "https://";
-    document.write("<sc"+"ript type='text/javascript' src='" +
-    scJsHost+
-    "statcounter.com/counter/counter.js'></"+"script>");
+      var sc_project=12945687;
+      var sc_invisible=0;
+      var sc_security="f1c715c5";
+      var scJsHost = "https://";
+      document.write("<sc"+"ript type='text/javascript' src='" + scJsHost + "statcounter.com/counter/counter.js'></"+"script>");
     </script>
-    <noscript><div class="statcounter"><a title="Web Analytics"
-    href="https://statcounter.com/" target="_blank"><img
-    class="statcounter"
-    src="https://c.statcounter.com/12945687/0/f1c715c5/0/"
-    alt="Web Analytics"
-    referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-    <!-- End of Statcounter Code -->
+    <noscript>
+      <div class="statcounter">
+        <a title="Web Analytics" href="https://statcounter.com/" target="_blank" rel="noopener noreferrer">
+          <img class="statcounter" src="https://c.statcounter.com/12945687/0/f1c715c5/0/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade">
+        </a>
+      </div>
+    </noscript>
   </div>
 
-  <!-- 结束主内容区 -->
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Manting Xie | School of Mathematics, Tianjin University</p>
+    <p>Last updated: <script>
+      const now = new Date();
+      const dateStr = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, '0') + "-" + String(now.getDate()).padStart(2, '0');
+      document.write(dateStr);
+    </script></p>
+  </footer>
+
+<!-- End page content -->
 </div>
 
 <script>
-// 手风琴效果（备用）
-function myAccFunc() {
-  var x = document.getElementById("demoAcc");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-// 打开侧边栏
+// 侧边栏控制函数 - 优化版
 function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
+  const sidebar = document.getElementById("mySidebar");
+  const overlay = document.getElementById("myOverlay");
+  
+  // 确保在移动端正确显示
+  sidebar.style.display = "block";
+  overlay.style.display = "block";
+  
+  // 添加动画效果
+  sidebar.style.transform = "translateX(0)";
+  overlay.style.opacity = "1";
 }
 
-// 关闭侧边栏
 function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
+  const sidebar = document.getElementById("mySidebar");
+  const overlay = document.getElementById("myOverlay");
+  
+  sidebar.style.display = "none";
+  overlay.style.display = "none";
 }
 
-// 确保移动端初始状态侧边栏关闭
-if (window.innerWidth < 769) {
-  w3_close();
-}
+// DOM加载完成后的优化
+$(document).ready(function(){
+  // 侧边栏链接点击关闭侧边栏（小屏幕）
+  $('.w3-bar-item').click(function(e) {
+    // 排除外部链接
+    const href = $(this).attr('href');
+    if ($(window).width() < 992 && href && (href.startsWith('#') || href === 'chinese.php')) {
+      w3_close();
+    }
+  });
 
-// 窗口大小变化时调整
-window.addEventListener('resize', function() {
-  if (window.innerWidth >= 769) {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "none";
-  } else {
-    w3_close();
+  // 图片懒加载增强
+  $("img").each(function() {
+    if (!$(this).attr("loading")) {
+      $(this).attr("loading", "lazy");
+    }
+  });
+  
+  // 窗口大小变化时的适配
+  $(window).resize(function() {
+    if ($(window).width() >= 992) {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "none";
+    } else {
+      // 移动端默认关闭侧边栏
+      if (!document.getElementById("mySidebar").style.display || document.getElementById("mySidebar").style.display === "block") {
+        w3_close();
+      }
+    }
+  });
+  
+  // 平滑滚动优化 - 修复锚点定位
+  $('a[href^="#"]').on('click', function(event) {
+    event.preventDefault();
+    
+    const targetId = $(this).attr('href');
+    if (targetId === '#') return;
+    
+    const targetElement = $(targetId);
+    if (targetElement.length) {
+      const offsetTop = targetElement.offset().top - 20;
+      
+      $('html, body').animate({
+        scrollTop: offsetTop
+      }, 600);
+    }
+  });
+  
+  // 初始检查窗口大小
+  $(window).trigger('resize');
+});
+
+// 页面加载完成后的优化
+window.addEventListener('load', function() {
+  // 移除加载动画
+  document.body.classList.add('loaded');
+  
+  // 修复iOS上的滚动问题
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+    document.addEventListener('touchmove', function(e) {}, { passive: false });
   }
 });
+
+// 错误处理：捕获JavaScript错误
+window.onerror = function(message, source, lineno, colno, error) {
+  console.error('JS Error:', message, 'at', source, lineno, colno);
+  return true;
+};
 </script>
 
 </body>
