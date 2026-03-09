@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<?php
+header("Content-type: text/html; charset=utf-8");
+?>
+
+<html>
+<head>
+  <title>Publications - Manting Xie's Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name=ProgId content=Word.Document>
+  <meta name=Generator content="Microsoft Word 15">
+  <meta name=Originator content="Microsoft Word 15">
+  <meta name="description" content="Publications of Manting Xie, Associate Professor at Tianjin University">
+  <meta name="keywords" content="Manting Xie, Publications, Eigenvalue, Finite Element, Bose-Einstein Condensates">
+  <meta name="author" content="Manting Xie" />
+
+  <!-- 复用主页面的外部资源 -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Oswald">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- 复用主页面的核心样式 -->
+  <style type="text/css">
+    /* 全局样式重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 基础字体配置 */
+    .w3-sidebar a {font-family: "Roboto", sans-serif; font-size: 14px !important;}
+    body, h1, h2, h3, h4, h5, h6, .w3-wide {font-family: "Montserrat", sans-serif;}
+    .chinese {font-size: 100%;}
+    
+    /* 自定义配色方案 */
+    :root {
+      --primary-color: #3f51b5;
+      --primary-light: #757de8;
+      --primary-dark: #002984;
+      --secondary-color: #f5f5f5;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+      --accent-color: #ff4081;
+      --link-color: #447ec9;
+    }
+
+    /* 侧边栏样式 */
+    #mySidebar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      width: 180px !important;
+    }
+    #mySidebar .w3-bar-item {
+      transition: background-color 0.2s ease;
+      border-radius: 4px;
+      margin: 0 4px 4px 4px !important;
+      padding: 8px 10px !important;
+      white-space: nowrap;
+    }
+    #mySidebar .w3-bar-item i {
+      width: 20px;
+      text-align: center;
+      margin-right: 6px !important;
+    }
+    #mySidebar .w3-bar-item:hover {
+      background-color: var(--primary-light) !important;
+      color: var(--text-light) !important;
+    }
+    #mySidebar h3 {
+      color: var(--text-light);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      font-size: 16px !important;
+      text-align: center;
+    }
+
+    /* 顶部导航（小屏幕） */
+    .w3-top {
+      background-color: var(--primary-color) !important;
+    }
+    .w3-top .w3-button {
+      color: var(--text-light) !important;
+    }
+    .w3-top .w3-bar-item {
+      color: var(--text-light) !important;
+    }
+
+    /* 主内容区 */
+    .w3-main {
+      margin-left: 180px !important;
+      padding: 0 24px;
+      color: var(--text-dark);
+      background-color: #f9f9f9;
+      padding-bottom: 40px;
+    }
+
+    /* 区块样式 */
+    .section-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 24px !important;
+      margin-top: 24px !important;
+      margin-bottom: 24px !important;
+      transition: box-shadow 0.3s ease;
+    }
+    .section-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .section-card h2 {
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .section-card h3 {
+      color: var(--primary-color);
+      margin: 20px 0 12px 0;
+    }
+
+    /* 出版物列表统一样式 */
+    .publication-list {
+      margin-left: 30px;
+      line-height: 1.8;
+    }
+    .publication-list li {
+      margin-bottom: 20px;
+      padding-left: 12px;
+      border-left: 3px solid var(--primary-light);
+    }
+    /* 序号统一样式：蓝色粗体 */
+    .publication-list li::marker {
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    /* 论文标题统一样式 */
+    .publication-list li .paper-title {
+      font-weight: 600;
+      color: var(--link-color);
+    }
+    .publication-list li a.paper-title {
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .publication-list li a.paper-title:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    /* 链接样式 */
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+    a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    /* 页脚样式 */
+    footer {
+      background-color: var(--primary-dark);
+      color: var(--text-light);
+      padding: 24px;
+      text-align: center;
+      margin-top: 40px;
+      border-radius: 8px 8px 0 0;
+    }
+    footer a {
+      color: var(--text-light);
+      text-decoration: underline;
+    }
+
+    /* 响应式适配 */
+    @media (max-width: 992px) {
+      .w3-main {
+        margin-left: 0 !important;
+        padding: 0 16px;
+      }
+      #mySidebar {
+        width: 200px !important;
+      }
+      .publication-list {
+        margin-left: 20px;
+      }
+    }
+
+    /* 平滑滚动 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 统计计数器 */
+    .statcounter {
+      margin-top: 24px;
+      text-align: center;
+    }
+  </style>
+  <link rel="icon" type="image/png" href="images/icons.png">
+</head>
+
+<body class="w3-content" style="max-width:1200px;margin:0 auto;background-color:#f9f9f9">
+
+<!-- 复用侧边栏 -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-right" style="z-index:3;" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+    <h3><b>MT XIE</b></h3>
+  </div>
+  <div class="w3-padding-64 w3-text-light-grey w3-large" style="font-weight:bold">
+    <a href="index.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
+    <a href="index.html#cv" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Brief CV</a>
+    <a href="publications.html" class="w3-bar-item w3-button" style="background-color: var(--primary-light) !important;"><i class="fa fa-book"></i> Publications</a>
+    <a href="index.html#grants" class="w3-bar-item w3-button"><i class="fa fa-money-bill"></i> Grants</a>
+    <a href="index.html#teaching" class="w3-bar-item w3-button"><i class="fa fa-chalkboard-teacher"></i> Teaching</a>
+    <a href="index.html#group" class="w3-bar-item w3-button"><i class="fa fa-users"></i> Group</a>
+    <a href="index.html#uselink" class="w3-bar-item w3-button"><i class="fa fa-link"></i> Useful Links</a>
+    <a href="chinese.html" class="w3-bar-item w3-button"><i class="fa fa-language"></i> 中文版</a>
+  </div>
+</nav>
+
+<!-- 小屏幕顶部导航 -->
+<header class="w3-bar w3-top w3-hide-large w3-xlarge">
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-ripple w3-left" onclick="w3_open()">
+    <b>&#9776;</b>
+  </a>
+  <div class="w3-bar-item w3-padding-24"> <b>Manting Xie </b> </div>
+</header>
+
+<!-- 侧边栏遮罩层 -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- 主内容区 -->
+<div class="w3-main">
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+
+  <!-- 出版物核心内容 -->
+  <div class="section-card w3-container" id="publications">
+    <h2><strong>Publications</strong></h2>
+
+    <!-- In Preparation 格式与已发表完全统一 -->
+    <h3><strong>In Preparation</strong></h3>
+    <ol class="publication-list">
+      <li>
+        <span class="paper-title">An efficient and spectrally-accurate solver for computing the Bogoliubov-de Gennes excitations of rotating Bose-Einstein condensates</span><br>
+        Li, Yu; <strong>Xie, Manting</strong>; Zhang, Shaobo; Zhang, Yong.
+      </li>
+      <li>
+        <span class="paper-title">Augmented subspace adaptive finite element method for computing band gaps of photonic crystals</span><br>
+        Yue, Meiling; Xie, Hehu; <strong>Xie, Manting</strong>*.
+      </li>
+    </ol>
+
+    <!-- 已发表论文（倒序排列，原生reversed自动生成正确序号） -->
+    <h3><strong>Published (reverse order)</strong></h3>
+    <ol reversed class="publication-list">
+      <!-- 2026年（最新） -->
+      <li>
+        <a href="./files/1Bogoliubov/2026-MMS.pdf" target="_blank" class="paper-title">A structure-preserving Fourier spectral method for computing the Bogoliubov-de Gennes excitations of spin-1 Bose-Einstein Condensates</a><br>
+        Li, Yu; Li, Zhixuan; <strong>Xie, Manting</strong>*; Zhang, Yong<br>
+        <em>Multiscale Model. Simul.</em>, accepted, 2026.
+      </li>
+      <li>
+        <a href="./files/1Bogoliubov/2026-JCP.pdf" target="_blank" class="paper-title">Computing the Bogoliubov-de Gennes excitations of two-component Bose-Einstein condensates</a><br>
+        <strong>Xie, Manting</strong>; Zhang, Yong<br>
+        <em>J. Comput. Phys.</em>, 556 (2026), Paper No. 114813, 18 pp.
+      </li>
+      <li>
+        <a href="./files/3EP/2026-SINUM.pdf" target="_blank" class="paper-title">A novel augmented subspace adaptive finite element method for the eigenvalue problem with discontinuous coefficients</a><br>
+        <strong>Xie, Manting</strong>; Yue, Meiling<br>
+        <em>SIAM J. Numer. Anal.</em>, accepted, 2026.
+      </li>
+
+      <!-- 2023年 -->
+      <li>
+        <a href="./files/2BEC/2023-JSC-Xie.pdf" target="_blank" class="paper-title">An efficient adaptive mesh redistribution method for nonlinear eigenvalue problems in Bose-Einstein condensates</a><br>
+        Xie, Hehu; <strong>Xie, Manting</strong>*; Yin, Xiaobo; Zhao, Gang<br>
+        <em>J. Sci. Comput.</em>, 94 (2023), no. 2, Paper No. 37, 20 pp.
+      </li>
+      <li>
+        <a href="./files/3EP/2023-NA.pdf" target="_blank" class="paper-title">Local and parallel multigrid method for semilinear Neumann problem with nonlinear boundary condition</a><br>
+        Xu, Fei; Wang, Bingyi; <strong>Xie, Manting</strong>*<br>
+        <em>Numer. Algorithms</em>, doi: https://doi.org/10.1007/s11075-023-01643-5.
+      </li>
+      <li>
+        <a href="./files/3EP/2023-CAMWA.pdf" target="_blank" class="paper-title">A posteriori and superconvergence error analysis for finite element approximation of the Steklov eigenvalue problem</a><br>
+        Xiong, Chunguang; <strong>Xie, Manting</strong>*; Luo, Fusheng; Su, Hongling<br>
+        <em>Comput. Math. Appl.</em>, 144 (2023), 90-99.
+      </li>
+      <li>
+        <a href="./files/3EP/2023-JSC-Xu.pdf" target="_blank" class="paper-title">Multigrid method for nonlinear eigenvalue problems based on Newton iteration</a><br>
+        Xu, Fei; <strong>Xie, Manting</strong>; Yue, Meiling<br>
+        <em>J. Sci. Comput.</em>, 94 (2023), no. 2, Paper No. 42, 21 pp.
+      </li>
+
+      <!-- 2022年 -->
+      <li>
+        <a href="./files/1Bogoliubov/2022-SISC.pdf" target="_blank" class="paper-title">A spectrally accurate numerical method for computing the Bogoliubov-de Gennes excitations of dipolar Bose-Einstein condensates</a><br>
+        Tang, Qinglin; <strong>Xie, Manting</strong>; Zhang, Yong; Zhang, Yuqing<br>
+        <em>SIAM J. Sci. Comput.</em>, 44 (2022), no. 1, B100-B121.
+      </li>
+      <li>
+        <a href="./files/3EP/2022-BIT.pdf" target="_blank" class="paper-title">An efficient adaptive multigrid method for the elasticity eigenvalue problem</a><br>
+        Xu, Fei; Huang, Qiumei; <strong>Xie, Manting</strong>*<br>
+        <em>BIT</em>, 62 (2022), no. 4, 2005-2033.
+      </li>
+      <li>
+        <a href="./files/3EP/2022-JSC.pdf" target="_blank" class="paper-title">A new family of mixed method for the biharmonic eigenvalue problem based on the first order equations of Hellan-Herrmann-Johnson type</a><br>
+        Li, Yu; <strong>Xie, Manting</strong>; Xiong, Chunguang<br>
+        <em>J. Sci. Comput.</em>, 93 (2022), no. 3, Paper No. 66, 23 pp.
+      </li>
+      <li>
+        <a href="./files/3EP/2022-JCAM.pdf" target="_blank" class="paper-title">Convergence and optimality of adaptive multigrid method for multiple eigenvalue problems</a><br>
+        Xu, Fei; <strong>Xie, Manting</strong>; Huang, Qiumei; Yue, Meiling; Ma, Hongkun<br>
+        <em>J. Comput. Appl. Math.</em>, 415 (2022), Paper No. 114450, 20 pp.
+      </li>
+      <li>
+        <a href="./files/3EP/2022-AICM.pdf" target="_blank" class="paper-title">A multilevel Newton's method for the Steklov eigenvalue problem</a><br>
+        Yue, Meiling; Xu, Fei; <strong>Xie, Manting</strong>*<br>
+        <em>Adv. Comput. Math.</em>, 48 (2022), no. 3, Paper No. 33, 29 pp.
+      </li>
+
+      <!-- 2021年 -->
+      <li>
+        <a href="./files/1Bogoliubov/2021-EAJAM.pdf" target="_blank" class="paper-title">Efficient and accurate computation of the Bogoliubov-de Gennes excitations for the quasi-2D dipolar Bose-Einstein condensates</a><br>
+        Zhang, Yuqing; Liu, Xin; <strong>Xie, Manting</strong>*<br>
+        <em>East Asian J. Appl. Math.</em>, 11 (2021), no. 4, 686-707.
+      </li>
+      <li>
+        <a href="./files/2BEC/2021-BIT.pdf" target="_blank" class="paper-title">A multigrid method for the ground state solution of Bose-Einstein condensates based on Newton iteration</a><br>
+        Xu, Fei; Xie, Hehu; <strong>Xie, Manting</strong>; Yue, Meiling<br>
+        <em>BIT</em>, 61 (2021), no. 2, 645-663.
+      </li>
+      <li>
+        <a href="./files/3EP/2021-ESAIM.pdf" target="_blank" class="paper-title">A type of full multigrid method for non-selfadjoint Steklov eigenvalue problems in inverse scattering</a><br>
+        <strong>Xie, Manting</strong>; Xu, Fei; Yue, Meiling<br>
+        <em>ESAIM Math. Model. Numer. Anal.</em>, 55 (2021), no. 5, 1779-1802.
+      </li>
+
+      <!-- 2020年 -->
+      <li>
+        <a href="./files/3EP/2020-AML.pdf" target="_blank" class="paper-title">Adaptive time-stepping algorithms for molecular beam epitaxy: based on energy or roughness</a><br>
+        Luo, Fusheng; Xie, Hehu; <strong>Xie, Manting</strong>; Xu, Fei<br>
+        <em>Appl. Math. Lett.</em>, 99 (2020), 105991, 8 pp.
+      </li>
+
+      <!-- 2019年 -->
+      <li>
+        <a href="./files/3EP/2019-JNMCA.pdf" target="_blank" class="paper-title">An efficient multigrid method for semilinear elliptic problems</a> (in Chinese)<br>
+        Xie, Hehu; <strong>Xie, Manting</strong>; Zhang, Ning<br>
+        <em>J. Numer. Methods Comput. Appl.</em>, 146 (2019), 55-72.
+      </li>
+      <li>
+        <a href="./files/2BEC/2019-JSC.pdf" target="_blank" class="paper-title">Computable error estimates for ground state solution of Bose-Einstein condensates</a><br>
+        Xie, Hehu; <strong>Xie, Manting</strong>*<br>
+        <em>J. Sci. Comput.</em>, 81 (2019), no. 2, 1072-1087.
+      </li>
+
+      <!-- 2018年 -->
+      <li>
+        <a href="./files/3EP/2018-JJIAMs.pdf" target="_blank" class="paper-title">Explicit lower bounds for Stokes eigenvalue problems by using nonconforming finite elements</a><br>
+        <strong>Xie, Manting</strong>; Xie, Hehu; Liu, Xuefeng<br>
+        <em>Jpn. J. Ind. Appl. Math.</em>, 35 (2018), no. 1, 335-354.
+      </li>
+
+      <!-- 2017年 -->
+      <li>
+        <a href="./files/3EP/2017-EAJAM.pdf" target="_blank" class="paper-title">Computable error estimates for a nonsymmetric eigenvalue problem</a><br>
+        Xie, Hehu; <strong>Xie, Manting</strong>; Yin, Xiaobo; Yue, Meiling<br>
+        <em>East Asian J. Appl. Math.</em>, 7 (2017), no. 3, 583-602.
+      </li>
+
+      <!-- 2016年（最早） -->
+      <li>
+        <a href="./files/3EP/2016-SCM.pdf" target="_blank" class="paper-title">A full multigrid method for nonlinear eigenvalue problems</a><br>
+        Jia, Shanghui; Xie, Hehu; <strong>Xie, Manting</strong>; Xu, Fei<br>
+        <em>Sci. China Math.</em>, 59 (2016), no. 10, 2037-2048.
+      </li>
+      <li>
+        <a href="./files/2BEC/2016-CICP.pdf" target="_blank" class="paper-title">A multigrid method for ground state solution of Bose-Einstein condensates</a><br>
+        Xie, Hehu; <strong>Xie, Manting</strong><br>
+        <em>Commun. Comput. Phys.</em>, 19 (2016), no. 3, 648-662.
+      </li>
+    </ol>
+  </div>
+
+  <!-- 统计计数器 -->
+  <div class="statcounter">
+    <script type="text/javascript">
+      var sc_project=12945687;
+      var sc_invisible=0;
+      var sc_security="f1c715c5";
+      var scJsHost = "https://";
+      document.write("<sc"+"ript type='text/javascript' src='" + scJsHost + "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript>
+      <div class="statcounter">
+        <a title="Web Analytics" href="https://statcounter.com/" target="_blank">
+          <img class="statcounter" src="https://c.statcounter.com/12945687/0/f1c715c5/0/" alt="Web Analytics" referrerPolicy="no-referrer-when-downgrade">
+        </a>
+      </div>
+    </noscript>
+  </div>
+
+  <!-- 页脚 -->
+  <footer>
+    <p>&copy; 2025 Manting Xie | School of Mathematics, Tianjin University</p>
+    <p>Last updated: <script>document.write(new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate());</script></p>
+  </footer>
+
+</div>
+
+<!-- 复用交互脚本 -->
+<script>
+// 侧边栏开关
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// jQuery增强
+$(document).ready(function(){
+  // 小屏幕点击侧边栏链接关闭侧边栏
+  $('.w3-bar-item').click(function() {
+    if ($(window).width() < 992) {
+      w3_close();
+    }
+  });
+
+  // 图片懒加载
+  $("img").each(function() {
+    $(this).attr("loading", "lazy");
+  });
+});
+</script>
+
+</body>
+</html>

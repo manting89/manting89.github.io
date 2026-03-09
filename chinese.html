@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<?php
+header("Content-type: text/html; charset=utf-8");
+?>
+
+<html>
+<head>
+  <title>谢满庭 - 天津大学数学学院</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
+  <meta name=ProgId content=Word.Document>
+  <meta name=Generator content="Microsoft Word 15">
+  <meta name=Originator content="Microsoft Word 15">
+  <meta name="description" content="谢满庭，天津大学数学学院副教授，研究方向为计算数学、数值分析等">
+  <meta name="keywords" content="谢满庭, 天津大学, 应用数学, 计算数学, 特征值问题, 有限元方法, 玻色-爱因斯坦凝聚">
+  <meta name="author" content="谢满庭" />
+
+  <!-- 引入与英文主页相同的外部资源 -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Oswald">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style type="text/css">
+    /* 全局样式重置 - 对齐英文主页 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 基础字体配置 */
+    .w3-sidebar a {font-family: "Roboto", sans-serif; font-size: 14px !important;}
+    body, h1, h2, h3, h4, h5, h6, .w3-wide {font-family: "Montserrat", sans-serif;}
+    .chinese {font-size: 100%;}
+    
+    /* 自定义配色方案 - 与英文主页一致 */
+    :root {
+      --primary-color: #3f51b5; /* 主靛蓝 */
+      --primary-light: #757de8; /* 浅靛蓝 */
+      --primary-dark: #002984; /* 深靛蓝 */
+      --secondary-color: #f5f5f5; /* 浅灰背景 */
+      --text-dark: #333333; /* 深色文本 */
+      --text-light: #ffffff; /* 浅色文本 */
+      --accent-color: #ff4081; /* 强调色（粉色） */
+      --link-color: #447ec9; /* 链接色 */
+    }
+
+    /* 侧边栏优化 - 与英文主页一致 */
+    #mySidebar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      width: 180px !important; /* 加宽侧边栏到180px */
+    }
+    #mySidebar .w3-bar-item {
+      transition: background-color 0.2s ease;
+      border-radius: 4px;
+      margin: 0 4px 4px 4px !important;
+      padding: 8px 10px !important;
+      white-space: nowrap;
+      color: var(--text-light) !important;
+    }
+    #mySidebar .w3-bar-item i {
+      width: 20px;
+      text-align: center;
+      margin-right: 6px !important;
+    }
+    #mySidebar .w3-bar-item:hover {
+      background-color: var(--primary-light) !important;
+      color: var(--text-light) !important;
+    }
+    #mySidebar h3 {
+      color: var(--text-light);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      font-size: 16px !important;
+      text-align: center;
+    }
+
+    /* 顶部导航优化（小屏幕） */
+    .w3-top {
+      background-color: var(--primary-color) !important;
+    }
+    .w3-top .w3-button {
+      color: var(--text-light) !important;
+    }
+    .w3-top .w3-bar-item {
+      color: var(--text-light) !important;
+    }
+
+    /* 主内容区优化 - 适配加宽的侧边栏 */
+    .w3-main {
+      margin-left: 180px !important;
+      padding: 0 24px;
+      color: var(--text-dark);
+    }
+
+    /* 区块样式优化 - 与英文主页一致 */
+    .section-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 24px !important;
+      margin-bottom: 24px !important;
+      transition: box-shadow 0.3s ease;
+    }
+    .section-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .section-card h2 {
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .section-card h3 {
+      color: var(--primary-color);
+      margin: 20px 0 12px 0;
+    }
+
+    /* 个人信息区优化 */
+    #home {
+      padding: 40px 24px !important;
+      text-align: left !important;
+    }
+    #home .profile-photo {
+      float: left;
+      width: 220px;
+      max-width: 100%;
+      border-radius: 8px;
+      margin-right: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    #home .profile-info {
+      overflow: hidden;
+      padding-top: 16px;
+    }
+    #home .profile-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 35px;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+    #home .profile-contact {
+      line-height: 1.8;
+      margin-top: 16px;
+    }
+    #home .profile-links a {
+      color: var(--link-color);
+      text-decoration: none;
+      margin-right: 16px;
+      transition: color 0.2s ease;
+    }
+    #home .profile-links a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+    #home .profile-links a i {
+      margin-right: 6px;
+      font-size: 1.1em;
+      vertical-align: middle;
+    }
+
+    /* 列表样式优化 */
+    ul, ol {
+      margin-left: 24px;
+      line-height: 1.8;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* 链接样式优化 */
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+    a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    /* 页脚样式 - 与英文主页一致 */
+    footer {
+      background-color: var(--primary-dark);
+      color: var(--text-light);
+      padding: 24px;
+      text-align: center;
+      margin-top: 40px;
+      border-radius: 8px 8px 0 0;
+    }
+    footer a {
+      color: var(--text-light);
+      text-decoration: underline;
+    }
+
+    /* 响应式适配优化 - 与英文主页一致 */
+    @media (max-width: 992px) {
+      .w3-main {
+        margin-left: 0 !important;
+        padding: 0 16px;
+      }
+      #mySidebar {
+        width: 200px !important;
+      }
+      #home {
+        text-align: center !important;
+      }
+      #home .profile-photo {
+        float: none;
+        margin: 0 auto 24px auto;
+        display: block;
+      }
+      #home .profile-info {
+        text-align: center;
+      }
+      #home .profile-links a {
+        display: inline-block;
+        margin: 8px 8px 0 8px;
+      }
+    }
+
+    /* 平滑滚动 */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <link rel="icon" type="image/png" href="images/icons.png">
+</head>
+
+<body class="w3-content" style="max-width:1200px;margin:0 auto;background-color:#f9f9f9">
+
+<!-- 侧边栏/菜单 -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-right" style="z-index:3;" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+    <h3><b>谢满庭</b></h3>
+  </div>
+  <div class="w3-padding-64 w3-text-light-grey w3-large" style="font-weight:bold">
+    <!-- 将 English 改为 Homepage，指向英文主页 home.php -->
+    <a href="index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Homepage</a>
+    <a href="chinese.php" class="w3-bar-item w3-button"><i class="fa fa-language"></i> 中文版</a>
+  </div>
+</nav>
+
+<!-- 小屏顶部菜单 -->
+<header class="w3-bar w3-top w3-hide-large w3-xlarge">
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-ripple w3-left" onclick="w3_open()">
+    <b>&#9776;</b>
+  </a>
+  <div class="w3-bar-item w3-padding-24"> <b>谢满庭</b> </div>
+</header>
+
+<!-- 小屏侧边栏遮罩层 -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="关闭侧边菜单" id="myOverlay"></div>
+
+<!-- 主内容区 -->
+<div class="w3-main">
+  <!-- 小屏内容下移 -->
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+
+  <!-- 个人信息模块 -->
+  <div class="section-card w3-container" id="home">
+    <img src="./images/mtxie.jpg" alt="谢满庭教授照片" class="profile-photo">
+    <div class="profile-info">
+      <div class="profile-name"><b>谢满庭</b></div>
+      <h4 style="font-size: 18px;margin-bottom: 16px;">
+        <strong><a href="https://math.tju.edu.cn/info/1715/5579.htm"target="_blank">副教授</a></strong>
+      </h4>
+      <p>
+        <a href="https://www.tju.edu.cn/" target="_blank">天津大学</a>
+        <a href="https://math.tju.edu.cn/" target="_blank">数学学院</a>
+      </p>
+      <div class="profile-contact">
+        <p><strong>办公室:</strong> 58教学楼403室</p>
+        <p><strong>地址:</strong> 天津市津南区雅观路135号</p>
+        <p><strong>邮箱:</strong> mtxie@tju.edu.cn, xiemanting@lsec.cc.ac.cn</p>
+      </div>
+      <div class="profile-links">
+        <a href="https://scholar.google.com/citations?user=-kq-FyoAAAAJ&hl=en" target="_blank">
+          <i class="fab fa-google-scholar"></i> Google Scholar
+        </a>
+        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=1157382" target="_blank">
+        <span style="display:inline-block; width:12px; height:12px; background-color:var(--primary-color); border-radius:50%; margin-right:8px; vertical-align:middle;"></span>Mathscinet
+        </a>
+        <a href="https://www.researchgate.net/profile/Manting-Xie" target="_blank">
+          <i class="fab fa-researchgate"></i> Research Gate
+        </a>
+        <a href="https://orcid.org/0000-0003-3437-9576" target="_blank">
+          <i class="fab fa-orcid"></i> ORCID
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 简历模块 -->
+  <div class="section-card w3-container" id="cv">
+    <h2><strong>简历</strong></h2>
+    
+    <h3><strong>教育经历</strong></h3>
+    <ul>
+      <li>2012/09-2017/06 &nbsp; <a href="https://www.ucas.ac.cn/" target="_blank">中国科学院大学</a> <a href="http://icmsec.cc.ac.cn/" target="_blank">计算数学所</a>，<strong>博士</strong>，导师: <a href="http://lsec.cc.ac.cn/~linq/chinese_version.html" target="_blank">林群 院士</a>、<a href="http://lsec.cc.ac.cn/~hhxie/" target="_blank">谢和虎 研究员</a></li>
+      <li>2008/09-2012/06 &nbsp; <a href="https://www.sdnu.edu.cn/" target="_blank">山东师范大学</a> <a href="http://www.maths.sdnu.edu.cn" target="_blank">数学科学学院</a>，<strong>本科</strong></li>
+      <li>2005/09-2008/06 &nbsp; 河北昌黎第一中学</li>
+    </ul>
+
+    <h3><strong>工作经历</strong></h3>
+    <ul>
+      <li>2025/04-至今 &nbsp; 天津大学数学学院 &nbsp; 副教授</li>
+      <li>2023/07-2025/03 &nbsp; 天津大学应用数学中心 &nbsp; 副教授</li>
+      <li>2017/07-2023/06 &nbsp; 天津大学应用数学中心 &nbsp; 讲师</li>
+    </ul>
+
+    <h3><strong>研究方向</strong></h3>
+    <ul>
+      <li>玻色-爱因斯坦凝聚中的数学和数值方法</li>
+      <li>特征值问题的高效数值算法</li>
+      <li>有限元方法、逼近论及其应用</li>
+      <li>科学计算、数值分析及应用数学</li>
+    </ul>
+    <!--
+    <h3><strong>获奖情况</strong></h3>
+    <ul>
+      <li>2021年，《East Asian J. Appl. Math.》期刊特色文章奖</li>
+      <li>2017年，中国科学院朱李月华奖学金</li>
+      <li>2016年，中国科学院数学与系统科学研究院院长奖学金特等奖</li>
+      <li>2012年，山东省优秀毕业生（山东师范大学）</li>
+    </ul>
+   -->
+  </div>
+
+  <!-- 基金项目模块 -->
+  <div class="section-card w3-container" id="grants">
+    <h2><strong>基金项目</strong></h2>
+    <ul>
+      <li>2026/01-2029/12，自旋轨道耦合偶极玻色-爱因斯坦凝聚态特征值问题的理论分析与数值方法，国家自然科学基金面上项目，项目号：12571437，（<span style="font-weight: 700;">主持</span>）</li>
+      <li>2023/01-2026/12，偶极液滴玻色爱因斯坦凝聚态的数学分析和计算方法，国家自然科学基金面上项目，项目号：12271400，（参与）</li>
+      <li>2021/01-2023/12，旋转偶极玻色-爱因斯坦凝聚态稳态的高效有限元方法研究，国家自然科学基金青年项目，项目号：12001402，（<span style="font-weight: 700;">主持</span>）</li>
+      <li>2021/01-2024/12，几类偏微分方程系数反问题的算子分裂方法，国家自然科学基金面上项目，项目号：12071343，（参与）</li>
+    </ul>
+  </div>
+
+  <!-- 教学工作模块 -->
+  <div class="section-card w3-container" id="teaching">
+    <h2><strong>教学工作</strong></h2>
+    
+    <h3><strong>本科生课程</strong></h3>
+    <ul>
+      <li>微积分I @ 天津大学 (TJU)，96课时，2025秋</li>
+      <li>数值线性代数 @ 天津大学 (TJU)，48课时，2025秋</li>
+      <li>数值线性代数 @ 天津大学 (TJU)，48课时，2024秋</li>
+      <li>数值分析 @ 天津大学 (TJU)，96课时，2023春</li>
+      <li>高等数学(2B) @ 天津大学，80课时，2022春</li>
+      <li>数学分析专题(B) @ 天津大学，48课时，2021春</li>
+      <li>线性代数及其应用 @ 天津大学，56课时，2020春</li>
+      <li>线性代数及其应用 @ 天津大学，56课时，2019秋</li>
+      <li>线性代数及其应用 @ 天津大学，76课时，2018秋</li>
+      <li>线性代数及其应用 @ 天津大学，56课时，2018春</li>
+      <li>概率论 @ 天津大学，32课时，2017秋</li>
+    </ul>
+
+    <h3><strong>研究生课程</strong></h3>
+    <ul>
+      <li>工程数学基础 @ 天津大学，80课时，2018春</li>
+    </ul>
+  </div>
+
+  <!-- The Group Section (中文版) -->
+<div class="section-card w3-container" id="group">
+  <h2><strong>研究团队</strong></h2>
+  
+  <!-- 第一部分：合作研究者 Collaborators -->
+  <h3><strong>合作研究者</strong></h3>
+  <ul>
+    <li>林群 院士 (中国科学院数学与系统科学研究院)</li>
+    <li>谢和虎 研究员 (中国科学院数学与系统科学研究院)</li>
+    <!-- 可根据实际情况补充其他合作者 -->
+  </ul>
+
+  <!-- 第二部分：硕士研究生指导 Graduate Students -->
+  <h3><strong>硕士研究生指导</strong></h3>
+  <ul>
+    <li>2025，纪奕扬 & 曹佳萌 & 张令奇 @ 天津大学</li>
+    <li>2024，丁一 & 高杰 @ 天津大学</li>
+  </ul>
+
+  <!-- 第三部分：合作培养学生 Cooperant Students -->
+  <h3><strong>合作培养学生</strong></h3>
+  <ul>
+    <li>暂无</li>
+  </ul>
+
+  <!-- 第四部分：本科毕业论文指导 Undergraduate Students -->
+  <h3><strong>本科毕业论文指导</strong></h3>
+  <ul>
+    <li>2025，王哲涵 & 金浩宇 @ 天津大学</li>
+    <li>2024，纪奕扬 & 吴苏湘 @ 天津大学</li>
+    <li>2023，范洪玮 @ 天津大学</li>
+    <li>2022，史缘坤 & 刘千龙 @ 天津大学</li>
+    <li>2021，郝运 & 李才奇 @ 天津大学</li>
+  </ul>
+</div>
+
+  <!-- 页脚 - 与英文主页一致 -->
+  <footer>
+    <p>&copy; 2025 谢满庭 | 天津大学数学学院</p>
+    <p>最后更新: <script>document.write(new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate());</script></p>
+  </footer>
+
+<!-- 结束主内容区 -->
+</div>
+
+<script>
+// 侧边栏开关
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// 平滑滚动（增强版）
+$(document).ready(function(){
+  // 侧边栏链接点击关闭侧边栏（小屏幕）
+  $('.w3-bar-item').click(function() {
+    if ($(window).width() < 992) {
+      w3_close();
+    }
+  });
+
+  // 图片懒加载
+  $("img").each(function() {
+    $(this).attr("loading", "lazy");
+  });
+});
+
+// 页面加载时确保侧边栏初始状态正确
+window.onload = function() {
+  if (window.innerWidth <= 992) {
+    w3_close();
+  } else {
+    document.getElementById("mySidebar").style.display = "block";
+  }
+};
+
+// 窗口大小变化时适配侧边栏
+window.onresize = function() {
+  if (window.innerWidth > 992) {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "none";
+  } else {
+    w3_close();
+  }
+};
+</script>
+
+</body>
+</html>
