@@ -2,7 +2,6 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
 ?>
-
 <html>
 <head>
   <title>Manting Xie's Homepage</title>
@@ -24,11 +23,7 @@ header("Content-type: text/html; charset=utf-8");
 
   <style type="text/css">
     /* 全局样式重置 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     /* 基础字体配置 */
     .w3-sidebar a {font-family: "Roboto", sans-serif; font-size: 14px !important;}
@@ -37,29 +32,23 @@ header("Content-type: text/html; charset=utf-8");
     
     /* 自定义配色方案 */
     :root {
-      --primary-color: #3f51b5; /* 主靛蓝 */
-      --primary-light: #757de8; /* 浅靛蓝 */
-      --primary-dark: #002984; /* 深靛蓝 */
-      --secondary-color: #f5f5f5; /* 浅灰背景 */
-      --text-dark: #333333; /* 深色文本 */
-      --text-light: #ffffff; /* 浅色文本 */
-      --accent-color: #ff4081; /* 强调色（粉色） */
-      --link-color: #447ec9; /* 链接色 */
+      --primary-color: #3f51b5;
+      --primary-light: #757de8;
+      --primary-dark: #002984;
+      --secondary-color: #f5f5f5;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+      --accent-color: #ff4081;
+      --link-color: #447ec9;
     }
 
-    /* 侧边栏核心样式（修复移动端显示） */
+    /* 侧边栏优化 */
     #mySidebar {
       background-color: var(--primary-color) !important;
       box-shadow: 2px 0 10px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
       width: 180px !important;
-      display: none; /* 默认隐藏，移动端通过JS控制显示 */
-      z-index: 9999 !important; /* 确保层级最高 */
-      position: fixed !important;
-      top: 0 !important;
-      right: 0 !important;
-      height: 100vh !important; /* 占满屏幕高度 */
-      overflow-y: auto !important; /* 内容超出可滚动 */
+      z-index: 3; /* 确保层级 */
     }
     #mySidebar .w3-bar-item {
       transition: background-color 0.2s ease;
@@ -67,7 +56,7 @@ header("Content-type: text/html; charset=utf-8");
       margin: 0 4px 4px 4px !important;
       padding: 8px 10px !important;
       white-space: nowrap;
-      color: var(--text-light) !important;
+      color: var(--text-light) !important; /* 强制文字白色 */
     }
     #mySidebar .w3-bar-item i {
       width: 20px;
@@ -76,7 +65,6 @@ header("Content-type: text/html; charset=utf-8");
     }
     #mySidebar .w3-bar-item:hover {
       background-color: var(--primary-light) !important;
-      color: var(--text-light) !important;
     }
     #mySidebar h3 {
       color: var(--text-light);
@@ -87,24 +75,21 @@ header("Content-type: text/html; charset=utf-8");
       text-align: center;
     }
 
-    /* 顶部导航（小屏幕） */
+    /* 顶部导航优化 */
     .w3-top {
       background-color: var(--primary-color) !important;
-      z-index: 9998 !important;
+      z-index: 4; /* 确保顶部栏在侧边栏之上或同级 */
     }
-    .w3-top .w3-button {
-      color: var(--text-light) !important;
-    }
-    .w3-top .w3-bar-item {
+    .w3-top .w3-button, .w3-top .w3-bar-item {
       color: var(--text-light) !important;
     }
 
-    /* 主内容区 */
+    /* 主内容区优化 */
     .w3-main {
       margin-left: 180px !important;
       padding: 0 24px;
       color: var(--text-dark);
-      min-height: 100vh;
+      transition: margin-left 0.3s ease;
     }
 
     /* 区块样式 */
@@ -116,9 +101,7 @@ header("Content-type: text/html; charset=utf-8");
       margin-bottom: 24px !important;
       transition: box-shadow 0.3s ease;
     }
-    .section-card:hover {
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    }
+    .section-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
     .section-card h2 {
       color: var(--primary-dark);
       border-bottom: 2px solid var(--primary-color);
@@ -126,227 +109,192 @@ header("Content-type: text/html; charset=utf-8");
       margin-bottom: 20px;
       display: inline-block;
     }
-    .section-card h3 {
-      color: var(--primary-color);
-      margin: 20px 0 12px 0;
-    }
+    .section-card h3 { color: var(--primary-color); margin: 20px 0 12px 0; }
 
     /* 个人信息区 */
-    #home {
-      padding: 40px 24px !important;
-      text-align: left !important;
-    }
+    #home { padding: 40px 24px !important; text-align: left !important; }
     #home .profile-photo {
-      float: left;
-      width: 220px;
-      max-width: 100%;
-      border-radius: 8px;
-      margin-right: 24px;
+      float: left; width: 220px; max-width: 100%;
+      border-radius: 8px; margin-right: 24px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-    #home .profile-info {
-      overflow: hidden;
-      padding-top: 16px;
-    }
+    #home .profile-info { overflow: hidden; padding-top: 16px; }
     #home .profile-name {
       font-family: 'Oswald', sans-serif;
-      font-size: 35px;
-      color: var(--primary-dark);
-      margin-bottom: 12px;
+      font-size: 35px; color: var(--primary-dark); margin-bottom: 12px;
     }
-    #home .profile-contact {
-      line-height: 1.8;
-      margin-top: 16px;
-    }
+    #home .profile-contact { line-height: 1.8; margin-top: 16px; }
     #home .profile-links a {
-      color: var(--link-color);
-      text-decoration: none;
-      margin-right: 16px;
-      transition: color 0.2s ease;
+      color: var(--link-color); text-decoration: none;
+      margin-right: 16px; transition: color 0.2s ease;
     }
-    #home .profile-links a:hover {
-      color: var(--accent-color);
-      text-decoration: underline;
-    }
-    #home .profile-links a i {
-      margin-right: 6px;
-      font-size: 1.1em;
-      vertical-align: middle;
-    }
+    #home .profile-links a:hover { color: var(--accent-color); text-decoration: underline; }
+    #home .profile-links a i { margin-right: 6px; font-size: 1.1em; vertical-align: middle; }
 
-    /* 列表样式 */
-    ul, ol {
-      margin-left: 24px;
-      line-height: 1.8;
-    }
-    li {
-      margin-bottom: 8px;
-    }
+    /* 列表与链接 */
+    ul, ol { margin-left: 24px; line-height: 1.8; }
+    li { margin-bottom: 8px; }
     .publication-item {
-      margin-bottom: 16px;
-      padding-left: 8px;
+      margin-bottom: 16px; padding-left: 8px;
       border-left: 3px solid var(--primary-light);
     }
-    .publication-item a {
-      color: var(--link-color);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .publication-item a:hover {
-      color: var(--accent-color);
-    }
+    .publication-item a { color: var(--link-color); text-decoration: none; transition: color 0.2s ease; }
+    .publication-item a:hover { color: var(--accent-color); }
+    a { color: var(--link-color); text-decoration: none; }
+    a:hover { color: var(--accent-color); text-decoration: underline; }
 
-    /* 链接样式 */
-    a {
-      color: var(--link-color);
-      text-decoration: none;
-    }
-    a:hover {
-      color: var(--accent-color);
-      text-decoration: underline;
-    }
-
-    /* 页脚样式 */
+    /* 页脚 */
     footer {
-      background-color: var(--primary-dark);
-      color: var(--text-light);
-      padding: 24px;
-      text-align: center;
-      margin-top: 40px;
+      background-color: var(--primary-dark); color: var(--text-light);
+      padding: 24px; text-align: center; margin-top: 40px;
       border-radius: 8px 8px 0 0;
     }
-    footer a {
-      color: var(--text-light);
-      text-decoration: underline;
-    }
+    footer a { color: var(--text-light); text-decoration: underline; }
 
-    /* 遮罩层样式 */
-    #myOverlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      z-index: 9997 !important;
-      display: none;
-    }
-
-    /* 响应式适配 */
+    /* 响应式适配优化 - 关键修复区域 */
     @media (max-width: 992px) {
       .w3-main {
-        margin-left: 0 !important;
+        margin-left: 0 !important; /* 移动端重置边距 */
         padding: 0 16px;
       }
       #mySidebar {
         width: 200px !important;
+        /* 默认隐藏，通过JS添加 w3-show 显示 */
+        display: none; 
       }
-      #home {
-        text-align: center !important;
-      }
-      #home .profile-photo {
-        float: none;
-        margin: 0 auto 24px auto;
+      /* 当侧边栏被激活时显示 */
+      #mySidebar.w3-show {
         display: block;
       }
-      #home .profile-info {
-        text-align: center;
+      
+      #home { text-align: center !important; }
+      #home .profile-photo {
+        float: none; margin: 0 auto 24px auto; display: block;
       }
+      #home .profile-info { text-align: center; }
       #home .profile-links a {
-        display: inline-block;
-        margin: 8px 8px 0 8px;
+        display: inline-block; margin: 8px 8px 0 8px;
       }
-    }
-
-    /* 电脑端自动显示侧边栏 */
-    @media (min-width: 993px) {
-      #mySidebar { display: block !important; }
+      
+      /* 确保小屏幕顶部栏可见 */
+      .w3-hide-large { display: block !important; }
     }
 
     /* 平滑滚动 */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* 统计计数器样式 */
-    .statcounter {
-      margin-top: 24px;
-      text-align: center;
-    }
+    html { scroll-behavior: smooth; }
+    .statcounter { margin-top: 24px; text-align: center; }
   </style>
-
-  <!-- 侧边栏控制核心JS（极简稳定版） -->
-  <script>
-    // 初始化元素
-    var mySidebar = document.getElementById("mySidebar");
-    var myOverlay = document.getElementById("myOverlay");
-
-    // 打开侧边栏
-    function w3_open() {
-      mySidebar.style.display = "block";
-      myOverlay.style.display = "block";
-      document.body.style.overflow = "hidden"; // 防止背景滚动
-    }
-
-    // 关闭侧边栏
-    function w3_close() {
-      mySidebar.style.display = "none";
-      myOverlay.style.display = "none";
-      document.body.style.overflow = "auto"; // 恢复背景滚动
-    }
-
-    // 移动端点击菜单项自动关闭侧边栏
-    document.addEventListener('DOMContentLoaded', function() {
-      var menuItems = document.querySelectorAll('#mySidebar .w3-bar-item');
-      menuItems.forEach(function(item) {
-        item.addEventListener('click', function() {
-          if (window.innerWidth <= 992) {
-            w3_close();
-          }
-        });
-      });
-    });
-  </script>
-
   <link rel="icon" type="image/png" href="images/icons.png">
 </head>
 
 <body class="w3-content" style="max-width:1200px;margin:0 auto;background-color:#f9f9f9">
 
-<!-- 侧边栏/菜单 -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-right" id="mySidebar">
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-right" style="z-index:3;" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <h3><b>MT XIE</b></h3>
-    <!-- 移动端关闭按钮 -->
-    <button onclick="w3_close()" class="w3-button w3-display-topright w3-text-white" style="font-size:20px;">&times;</button>
+    <!-- 可选：添加一个关闭按钮在侧边栏内部，方便大屏误触后关闭，或者小屏幕操作 -->
+    <button onclick="w3_close()" class="w3-button w3-hide-large w3-display-topright" style="color:white;"><i class="fa fa-remove"></i></button>
   </div>
   <div class="w3-padding-64 w3-text-light-grey w3-large" style="font-weight:bold">
-    <a href="#home" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
-    <a href="#cv" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Brief CV</a>
-    <a href="publications.php" class="w3-bar-item w3-button"><i class="fa fa-book"></i> Publications</a>
-    <a href="#grants" class="w3-bar-item w3-button"><i class="fa fa-money-bill"></i> Grants</a>
-    <a href="#teaching" class="w3-bar-item w3-button"><i class="fa fa-chalkboard-teacher"></i> Teaching</a>
-    <a href="#group" class="w3-bar-item w3-button"><i class="fa fa-users"></i> Group</a>
-    <a href="#uselink" class="w3-bar-item w3-button"><i class="fa fa-link"></i> Useful Links</a>
-    <a href="chinese.php" class="w3-bar-item w3-button"><i class="fa fa-language"></i> 中文版</a>
+    <a href="#home" class="w3-bar-item w3-button" onclick="w3_close()"><i class="fa fa-home"></i> Home</a>
+    <a href="#cv" class="w3-bar-item w3-button" onclick="w3_close()"><i class="fa fa-user"></i> Brief CV</a>
+    <a href="publications.php" class="w3-bar-item w3-button" onclick="w3_close()"><i class="fa fa-book"></i> Publications</a>
+    <a href="#grants" class="w3-bar-item w3-button" onclick="w3_close()"><i class="fa fa-money-bill"></i> Grants</a>
+    <a href="#teaching" class="w3-bar-item w3-button" onclick="w3_close()"><i class="fa fa-chalkboard-teacher"></i> Teaching</a>
+    <a href="#group" class="w3-bar-item w3-button" onclick="w3_close()"><i class="fa fa-users"></i> Group</a>
+    <a href="#uselink" class="w3-bar-item w3-button" onclick="w3_close()"><i class="fa fa-link"></i> Useful Links</a>
+    <a href="chinese.php" class="w3-bar-item w3-button" onclick="w3_close()"><i class="fa fa-language"></i> 中文版</a>
   </div>
 </nav>
 
-<!-- 小屏幕顶部导航 -->
-<header class="w3-bar w3-top w3-hide-large w3-indigo w3-xlarge">
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-indigo w3-ripple w3-left" onclick="w3_open()">
-    <b>&#9776;</b>
-  </a>
-  <div class="w3-bar-item w3-padding-24"><b>Manting Xie</b></div>
+<!-- Top menu on small screens -->
+<!-- 修复：移除了多余的 div 闭合标签，简化结构 -->
+<header class="w3-bar w3-top w3-hide-large w3-indigo w3-xlarge" style="z-index:4;">
+   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-ripple w3-left" onclick="w3_open()">
+     <b>&#9776;</b>
+   </a>
+   <div class="w3-bar-item w3-padding-24" style="font-weight:bold;"> <b>Manting Xie</b> </div>
 </header>
 
-<!-- 遮罩层 -->
-<div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer;"></div>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-<!-- 主内容区 -->
-<div class="w3-main">
-  <!-- 小屏幕内容下移 -->
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:150px">
+
+  <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
+
+  <!-- 这里开始是你的具体内容，例如 Home Section -->
+  <div id="home" class="section-card">
+      <h2>Welcome</h2>
+      <p>这里是您的主页内容区域...</p>
+      <!-- 为了演示效果，添加一些占位内容 -->
+      <br><br><br><br><br>
+  </div>
+  
+  <div id="cv" class="section-card">
+      <h2>Brief CV</h2>
+      <p>CV 内容...</p>
+      <br><br><br><br><br>
+  </div>
+
+  <!-- 页面底部 -->
+  <footer>
+    <p>&copy; 2026 Manting Xie. All rights reserved.</p>
+  </footer>
+
+</div> <!-- End w3-main -->
+
+<!-- 核心修复：添加 JavaScript 逻辑 -->
+<script>
+// 获取侧边栏元素
+var mySidebar = document.getElementById("mySidebar");
+var overlayBg = document.getElementById("myOverlay");
+
+// 打开侧边栏函数
+function w3_open() {
+  if (mySidebar.style.display === "block") {
+    mySidebar.style.display = "none";
+    overlayBg.style.display = "none";
+  } else {
+    // 在小屏幕上显示侧边栏
+    mySidebar.style.display = "block";
+    overlayBg.style.display = "block";
+  }
+}
+
+// 关闭侧边栏函数
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+
+// 监听窗口大小变化，防止从移动端切换到桌面端时侧边栏状态异常
+window.onresize = function() {
+  if (window.innerWidth > 992) {
+    mySidebar.style.display = "block"; // 大屏默认显示
+    overlayBg.style.display = "none";
+    document.querySelector(".w3-main").style.marginLeft = "180px";
+  } else {
+    // 如果切回小屏，默认隐藏，除非用户主动打开
+    if(mySidebar.style.display !== "block") {
+       mySidebar.style.display = "none";
+    }
+    document.querySelector(".w3-main").style.marginLeft = "0";
+  }
+};
+
+// 初始化检查
+if (window.innerWidth <= 992) {
+    mySidebar.style.display = "none";
+    document.querySelector(".w3-main").style.marginLeft = "0";
+}
+</script>
+
+</body>
+</html>
 
   <!-- The Home Section -->
   <div class="section-card w3-container" id="home">
