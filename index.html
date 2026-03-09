@@ -211,7 +211,7 @@ header("Content-type: text/html; charset=utf-8");
       text-decoration: underline;
     }
 
-    /* 响应式适配优化 - 核心修改：小屏幕侧边栏隐藏 + 遮罩层默认隐藏 */
+    /* 响应式适配优化 */
     @media (max-width: 992px) {
       .w3-main {
         margin-left: 0 !important; /* 移动端重置边距 */
@@ -219,7 +219,6 @@ header("Content-type: text/html; charset=utf-8");
       }
       #mySidebar {
         width: 200px !important; /* 移动端侧边栏宽度 */
-        display: none; /* 默认隐藏，点击按钮后显示 */
       }
       #home {
         text-align: center !important;
@@ -236,18 +235,6 @@ header("Content-type: text/html; charset=utf-8");
         display: inline-block;
         margin: 8px 8px 0 8px;
       }
-    }
-
-    /* 大屏幕始终显示侧边栏 */
-    @media (min-width: 993px) {
-      #mySidebar {
-        display: block !important;
-      }
-    }
-
-    /* 遮罩层默认隐藏 */
-    #myOverlay {
-      display: none;
     }
 
     /* 平滑滚动 */
@@ -274,7 +261,7 @@ header("Content-type: text/html; charset=utf-8");
   <div class="w3-padding-64 w3-text-light-grey w3-large" style="font-weight:bold">
     <a href="#home" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
     <a href="#cv" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Brief CV</a>
-    <a href="publications.php" class="w3-bar-item w3-button"><i class="fa fa-book"></i> Publications</a>
+    <a href=publications.php class="w3-bar-item w3-button"><i class="fa fa-book"></i> Publications</a>
     <a href="#grants" class="w3-bar-item w3-button"><i class="fa fa-money-bill"></i> Grants</a>
     <a href="#teaching" class="w3-bar-item w3-button"><i class="fa fa-chalkboard-teacher"></i> Teaching</a>
     <a href="#group" class="w3-bar-item w3-button"><i class="fa fa-users"></i> Group</a>
@@ -284,18 +271,19 @@ header("Content-type: text/html; charset=utf-8");
 </nav>
 
 <!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-indigo w3-xlarge">
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-indigo w3-ripple w3-left" style="font-stretch: expanded;" onclick="w3_open()">
-    <b>&#9776;</b>
-  </a>
-  <div class="w3-bar-item w3-padding-24"><b>Manting Xie</b></div>
+<header class="w3-bar w3-top w3-hide-large  w3-indigo w3-xlarge">
+   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-indigo w3-ripple w3-left"  style="font-stretch: expanded;" onclick="w3_open()"> <b>&#9776;</font></b>
+   <!-- <img align="middle"; style="width: 40%;max-width: 100px" alt="profile photo" src="./images/equiv.png"> -->
+   </a>
+  </div>
+ <div class="w3-bar-item w3-padding-24"> <b>Manting Xie </b> </div>
 </header>
-
 <!-- Overlay effect when opening sidebar on small screens -->
+
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main"> <!-- 移除内联样式 margin-left，由 CSS 统一控制 -->
+<div class="w3-main" style="margin-left:150px">
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
@@ -306,7 +294,7 @@ header("Content-type: text/html; charset=utf-8");
     <div class="profile-info">
       <div class="profile-name"><b>Manting XIE</b> (谢满庭)</div>
       <h4 style="font-size: 18px;margin-bottom: 16px;">
-        <strong><a href="https://math.tju.edu.cn/info/1715/5579.htm" target="_blank">Associate Professor</a></strong>
+        <strong><a href="https://math.tju.edu.cn/info/1715/5579.htm"target="_blank">Associate Professor</a></strong>
       </h4>
       <p>
         <a href="https://math.tju.edu.cn/" target="_blank">School of Mathematics</a>,
@@ -317,12 +305,13 @@ header("Content-type: text/html; charset=utf-8");
         <p><strong>Address:</strong> No. 135, Ya Guan Road, Jinnan District, Tianjin 300350, China</p>
         <p><strong>Email:</strong> mtxie@tju.edu.cn, xiemanting@lsec.cc.ac.cn</p>
       </div>
+      <!-- 核心修改：添加了四个链接的图标 -->
       <div class="profile-links">
         <a href="https://scholar.google.com/citations?user=-kq-FyoAAAAJ&hl=en" target="_blank">
           <i class="fab fa-google-scholar"></i> Google Scholar
         </a>
         <a href="https://mathscinet.ams.org/mathscinet/author?authorId=1157382" target="_blank">
-          <span style="display:inline-block; width:12px; height:12px; background-color:var(--primary-color); border-radius:50%; margin-right:8px; vertical-align:middle;"></span>Mathscinet
+        <span style="display:inline-block; width:12px; height:12px; background-color:var(--primary-color); border-radius:50%; margin-right:8px; vertical-align:middle;"></span>Mathscinet
         </a>
         <a href="https://www.researchgate.net/profile/Manting-Xie" target="_blank">
           <i class="fab fa-researchgate"></i> Research Gate
@@ -334,24 +323,26 @@ header("Content-type: text/html; charset=utf-8");
     </div>
   </div>
 
-  <!-- The News Section -->
-  <div class="section-card w3-container" id="news">
-    <h2><strong>Latest News</strong></h2>
-    
-    <!-- 2026年新闻 -->
-    <h3><strong>2026</strong></h3>
-    <ul>
-      <li>Our paper <a href="./files/1Bogoliubov/2026-MMS.pdf" target="_blank" style="color: var(--link-color); text-decoration: underline;">"A structure-preserving Fourier spectral method for computing the Bogoliubov-de Gennes excitations of spin-1 Bose-Einstein Condensates"</a> has been accepted by <em>Multiscale Model. Simul.</em></li>
-      <li>Our paper <a href="./files/3EP/2026-SINUM.pdf" target="_blank" style="color: var(--link-color); text-decoration: underline;">"A novel augmented subspace adaptive finite element method for the eigenvalue problem with discontinuous coefficients"</a> has been accepted by <em>SIAM J. Numer. Anal.</em></li>
-      <li>Our paper <a href="./files/1Bogoliubov/2026-JCP.pdf" target="_blank" style="color: var(--link-color); text-decoration: underline;">"Computing the Bogoliubov-de Gennes excitations of two-component Bose-Einstein condensates"</a> has been accepted by <em>J. Comput. Phys.</em></li>
-    </ul>
-    
-    <!-- 2025年新闻 -->
-    <h3><strong>2025</strong></h3>
-    <ul>
-      <li>We have obtained the National Natural Science Foundation of China (NSFC) General Program (No. 12571437).</li>
-    </ul>
-  </div>
+<!-- The News Section -->
+<div class="section-card w3-container" id="news">
+  <h2><strong>Latest News</strong></h2>
+  
+  <!-- 2026年新闻 -->
+  <h3><strong>2026</strong></h3>
+  <ul>
+    <li>Our paper <a href="./files/1Bogoliubov/2026-MMS.pdf" target="_blank" style="color: var(--link-color); text-decoration: underline;">"A structure-preserving Fourier spectral method for computing the Bogoliubov-de Gennes excitations of spin-1 Bose-Einstein Condensates"</a> has been accepted by <em>Multiscale Model. Simul.</em></li>
+    <li>Our paper <a href="./files/3EP/2026-SINUM.pdf" target="_blank" style="color: var(--link-color); text-decoration: underline;">"A novel augmented subspace adaptive finite element method for the eigenvalue problem with discontinuous coefficients"</a> has been accepted by <em>SIAM J. Numer. Anal.</em></li>
+    <li>Our paper <a href="./files/1Bogoliubov/2026-JCP.pdf" target="_blank" style="color: var(--link-color); text-decoration: underline;">"Computing the Bogoliubov-de Gennes excitations of two-component Bose-Einstein condensates"</a> has been accepted by <em>J. Comput. Phys.</em></li>
+  </ul>
+  
+  <!-- 2025年新闻 -->
+  <h3><strong>2025</strong></h3>
+  <ul>
+    <li>We have obtained the National Natural Science Foundation of China (NSFC) General Program (No. 12571437).</li>
+  </ul>
+</div>
+
+
 
   <!-- The CV Section -->
   <div class="section-card w3-container" id="cv">
@@ -360,6 +351,9 @@ header("Content-type: text/html; charset=utf-8");
     <ul>
       <li>2012/09-2017/06 &nbsp; <a href="http://icmsec.cc.ac.cn/en/" target="_blank">Institute of Computational Mathematics</a>, <a href="https://www.ucas.ac.cn/" target="_blank">University of Chinese Academy of Sciences</a>, &nbsp; <strong>Ph.D.</strong>, &nbsp; Supervisor: Academician <a href="http://lsec.cc.ac.cn/~linq/english_version.html" target="_blank">Qun Lin</a> and Prof. <a href="http://lsec.cc.ac.cn/~hhxie/" target="_blank">Hehu Xie</a></li>
       <li>2008/09-2012/06 &nbsp; School of Mathematical Sciences, <a href="http://english.sdnu.edu.cn/" target="_blank">Shandong Normal University</a>, &nbsp; <strong>BSc</strong></li>
+      <!--
+      <li>2005/09-2008/06 &nbsp; Hebei Changli No.1 Middle School</li>
+      -->
     </ul>
 
     <h3><strong>Work Experience</strong></h3>
@@ -416,46 +410,46 @@ header("Content-type: text/html; charset=utf-8");
     </ul>
   </div>
 
-  <!-- The Group Section -->
-  <div class="section-card w3-container" id="group">
-    <h2><strong>Collaborators and Students</strong></h2>
-    
-    <!-- 第一部分：Collaborators 合作者（去重+更新） -->
-    <h3><strong>Collaborators</strong></h3>
-    <ul>
-      <li>Yu Li (Lecturer, Tianjin University of Finance and Economics)</li>
-      <li>Qinglin Tang (Professor, Sichuan University)</li>
-      <li>Hehu Xie (Professor, Institute of Computational Mathematics, CAS)</li>
-      <li>Fei Xu (Associate Professor, Beijing University of Technology)</li>
-      <li>Meiling Yue (Associate Professor, Beijing Technology and Business University)</li>
-      <li>Yong Zhang (Professor, Tianjin University)</li>
-    </ul>
+<!-- The Group Section -->
+<div class="section-card w3-container" id="group">
+  <h2><strong>Collaborators and Students</strong></h2>
+  
+  <!-- 第一部分：Collaborators 合作者（去重+更新） -->
+  <h3><strong>Collaborators</strong></h3>
+  <ul>
+    <li>Yu Li (Lecturer, Tianjin University of Finance and Economics)</li>
+    <li>Qinglin Tang (Professor, Sichuan University)</li>
+    <li>Hehu Xie (Professor, Institute of Computational Mathematics, CAS)</li>
+    <li>Fei Xu (Associate Professor, Beijing University of Technology)</li>
+    <li>Meiling Yue (Associate Professor, Beijing Technology and Business University)</li>
+    <li>Yong Zhang (Professor, Tianjin University)</li>
+  </ul>
 
-    <!-- 第二部分：Graduate Students 研究生（内容不变） -->
-    <h3><strong>Graduate Students</strong></h3>
-    <ul>
-      <li>2025, Yiyang JI & Jiameng CAO & Lingqi ZHANG @TJU</li>
-      <li>2024, Yi DING & Jie GAO @TJU</li>
-    </ul>
+  <!-- 第二部分：Graduate Students 研究生（内容不变） -->
+  <h3><strong>Graduate Students</strong></h3>
+  <ul>
+    <li>2025, Yiyang JI & Jiameng CAO & Lingqi ZHANG @TJU</li>
+    <li>2024, Yi DING & Jie GAO @TJU</li>
+  </ul>
 
-    <!-- 第三部分：Cooperant Students 合作培养学生（新增内容） -->
-    <h3><strong>Cooperant Students</strong></h3>
-    <ul>
-      <li>Shaobo Zhang (Sichuan University)</li>
-      <li>Xin Liu (East China Institute of Technology)</li>
-      <li>Zhixuan Li (Sichuan University)</li>
-    </ul>
+  <!-- 第三部分：Cooperant Students 合作培养学生（新增内容） -->
+  <h3><strong>Cooperant Students</strong></h3>
+  <ul>
+    <li>Shaobo Zhang (Sichuan University)</li>
+    <li>Xin Liu (East China Institute of Technology)</li>
+    <li>Zhixuan Li (Sichuan University)</li>
+  </ul>
 
-    <!-- 第四部分：Undergraduate Students 本科生（标题简化） -->
-    <h3><strong>Undergraduate Students</strong></h3>
-    <ul>
-      <li>2025, Zhehan Wang & Haoyu Jin @TJU</li>
-      <li>2024, Yiyang JI & Suxiang Wu @TJU</li>
-      <li>2023, Hongwei FAN @TJU</li>
-      <li>2022, Yuankun SHI & Qianlong LIU @TJU</li>
-      <li>2021, Yun HAO & Caiqi LI @TJU</li>
-    </ul>
-  </div>
+  <!-- 第四部分：Undergraduate Students 本科生（标题简化） -->
+  <h3><strong>Undergraduate Students</strong></h3>
+  <ul>
+    <li>2025, Zhehan Wang & Haoyu Jin @TJU</li>
+    <li>2024, Yiyang JI & Suxiang Wu @TJU</li>
+    <li>2023, Hongwei FAN @TJU</li>
+    <li>2022, Yuankun SHI & Qianlong LIU @TJU</li>
+    <li>2021, Yun HAO & Caiqi LI @TJU</li>
+  </ul>
+</div>
 
   <!-- The Useful Links Section -->
   <div class="section-card w3-container" id="uselink">
