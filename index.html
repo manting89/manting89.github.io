@@ -31,11 +31,11 @@ header("Content-type: text/html; charset=utf-8");
     }
 
     /* 基础字体配置 */
-    .w3-sidebar a {font-family: "Roboto", sans-serif; font-size: 14px !important;} /* 缩小侧边栏字体 */
+    .w3-sidebar a {font-family: "Roboto", sans-serif; font-size: 14px !important;}
     body, h1, h2, h3, h4, h5, h6, .w3-wide {font-family: "Montserrat", sans-serif;}
     .chinese {font-size: 100%;}
     
-    /* 自定义配色方案（靛蓝为主色调，增加辅助色） */
+    /* 自定义配色方案 */
     :root {
       --primary-color: #3f51b5; /* 主靛蓝 */
       --primary-light: #757de8; /* 浅靛蓝 */
@@ -47,26 +47,32 @@ header("Content-type: text/html; charset=utf-8");
       --link-color: #447ec9; /* 链接色 */
     }
 
-    /* 侧边栏优化 - 核心修改：调整宽度+内边距 */
+    /* 侧边栏核心样式（修复移动端显示） */
     #mySidebar {
       background-color: var(--primary-color) !important;
       box-shadow: 2px 0 10px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
-      width: 180px !important; /* 加宽侧边栏到180px（原150px） */
-      /* 新增：默认隐藏移动端侧边栏 */
-      display: none;
+      width: 180px !important;
+      display: none; /* 默认隐藏，移动端通过JS控制显示 */
+      z-index: 9999 !important; /* 确保层级最高 */
+      position: fixed !important;
+      top: 0 !important;
+      right: 0 !important;
+      height: 100vh !important; /* 占满屏幕高度 */
+      overflow-y: auto !important; /* 内容超出可滚动 */
     }
     #mySidebar .w3-bar-item {
       transition: background-color 0.2s ease;
       border-radius: 4px;
-      margin: 0 4px 4px 4px !important; /* 减少左右内边距 */
-      padding: 8px 10px !important; /* 优化上下/左右内边距 */
-      white-space: nowrap; /* 强制文字不换行 */
+      margin: 0 4px 4px 4px !important;
+      padding: 8px 10px !important;
+      white-space: nowrap;
+      color: var(--text-light) !important;
     }
     #mySidebar .w3-bar-item i {
-      width: 20px; /* 固定图标宽度，避免晃动 */
+      width: 20px;
       text-align: center;
-      margin-right: 6px !important; /* 缩小图标与文字间距 */
+      margin-right: 6px !important;
     }
     #mySidebar .w3-bar-item:hover {
       background-color: var(--primary-light) !important;
@@ -81,9 +87,10 @@ header("Content-type: text/html; charset=utf-8");
       text-align: center;
     }
 
-    /* 顶部导航优化（小屏幕） */
+    /* 顶部导航（小屏幕） */
     .w3-top {
       background-color: var(--primary-color) !important;
+      z-index: 9998 !important;
     }
     .w3-top .w3-button {
       color: var(--text-light) !important;
@@ -92,14 +99,15 @@ header("Content-type: text/html; charset=utf-8");
       color: var(--text-light) !important;
     }
 
-    /* 主内容区优化 - 适配加宽的侧边栏 */
+    /* 主内容区 */
     .w3-main {
-      margin-left: 180px !important; /* 同步加宽主内容区左边距 */
+      margin-left: 180px !important;
       padding: 0 24px;
       color: var(--text-dark);
+      min-height: 100vh;
     }
 
-    /* 区块样式优化 */
+    /* 区块样式 */
     .section-card {
       background-color: white;
       border-radius: 8px;
@@ -123,7 +131,7 @@ header("Content-type: text/html; charset=utf-8");
       margin: 20px 0 12px 0;
     }
 
-    /* 个人信息区优化 */
+    /* 个人信息区 */
     #home {
       padding: 40px 24px !important;
       text-align: left !important;
@@ -160,14 +168,13 @@ header("Content-type: text/html; charset=utf-8");
       color: var(--accent-color);
       text-decoration: underline;
     }
-    /* 新增：图标样式优化 */
     #home .profile-links a i {
       margin-right: 6px;
       font-size: 1.1em;
       vertical-align: middle;
     }
 
-    /* 列表样式优化 */
+    /* 列表样式 */
     ul, ol {
       margin-left: 24px;
       line-height: 1.8;
@@ -189,7 +196,7 @@ header("Content-type: text/html; charset=utf-8");
       color: var(--accent-color);
     }
 
-    /* 链接样式优化 */
+    /* 链接样式 */
     a {
       color: var(--link-color);
       text-decoration: none;
@@ -213,19 +220,26 @@ header("Content-type: text/html; charset=utf-8");
       text-decoration: underline;
     }
 
-    /* 响应式适配优化 */
+    /* 遮罩层样式 */
+    #myOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 9997 !important;
+      display: none;
+    }
+
+    /* 响应式适配 */
     @media (max-width: 992px) {
       .w3-main {
-        margin-left: 0 !important; /* 移动端重置边距 */
+        margin-left: 0 !important;
         padding: 0 16px;
       }
       #mySidebar {
-        width: 200px !important; /* 移动端侧边栏宽度 */
-        position: fixed !important; /* 固定侧边栏位置 */
-        height: 100% !important; /* 占满屏幕高度 */
-        top: 0 !important;
-        right: 0 !important;
-        z-index: 1000 !important; /* 确保层级最高 */
+        width: 200px !important;
       }
       #home {
         text-align: center !important;
@@ -242,35 +256,11 @@ header("Content-type: text/html; charset=utf-8");
         display: inline-block;
         margin: 8px 8px 0 8px;
       }
-      /* 大屏隐藏侧边栏控制按钮，小屏显示 */
-      .w3-hide-large {
-        display: block !important;
-      }
-      .w3-show-large {
-        display: none !important;
-      }
     }
 
-    /* 大屏样式：显示侧边栏 */
+    /* 电脑端自动显示侧边栏 */
     @media (min-width: 993px) {
-      #mySidebar {
-        display: block !important;
-      }
-      .w3-hide-large {
-        display: none !important;
-      }
-    }
-
-    /* 遮罩层样式 */
-    #myOverlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      z-index: 999;
-      display: none;
+      #mySidebar { display: block !important; }
     }
 
     /* 平滑滚动 */
@@ -278,58 +268,62 @@ header("Content-type: text/html; charset=utf-8");
       scroll-behavior: smooth;
     }
 
-    /* 统计计数器样式优化 */
+    /* 统计计数器样式 */
     .statcounter {
       margin-top: 24px;
       text-align: center;
     }
   </style>
-  <link rel="icon" type="image/png" href="images/icons.png">
-  
-  <!-- 新增：侧边栏控制函数（核心修复） -->
+
+  <!-- 侧边栏控制核心JS（极简稳定版） -->
   <script>
+    // 初始化元素
+    var mySidebar = document.getElementById("mySidebar");
+    var myOverlay = document.getElementById("myOverlay");
+
     // 打开侧边栏
     function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-      document.getElementById("myOverlay").style.display = "block";
+      mySidebar.style.display = "block";
+      myOverlay.style.display = "block";
+      document.body.style.overflow = "hidden"; // 防止背景滚动
     }
 
     // 关闭侧边栏
     function w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
-      document.getElementById("myOverlay").style.display = "none";
+      mySidebar.style.display = "none";
+      myOverlay.style.display = "none";
+      document.body.style.overflow = "auto"; // 恢复背景滚动
     }
 
-    // 页面加载完成后初始化
-    $(document).ready(function() {
-      // 点击遮罩层关闭侧边栏
-      $("#myOverlay").click(function() {
-        w3_close();
-      });
-      
-      // 移动端点击菜单项后自动关闭侧边栏
-      $("#mySidebar .w3-bar-item").click(function() {
-        if ($(window).width() <= 992) {
-          w3_close();
-        }
+    // 移动端点击菜单项自动关闭侧边栏
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuItems = document.querySelectorAll('#mySidebar .w3-bar-item');
+      menuItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+          if (window.innerWidth <= 992) {
+            w3_close();
+          }
+        });
       });
     });
   </script>
+
+  <link rel="icon" type="image/png" href="images/icons.png">
 </head>
 
 <body class="w3-content" style="max-width:1200px;margin:0 auto;background-color:#f9f9f9">
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-right" style="z-index:3;" id="mySidebar">
+<!-- 侧边栏/菜单 -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-right" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <h3><b>MT XIE</b></h3>
-    <!-- 新增：移动端关闭按钮 -->
+    <!-- 移动端关闭按钮 -->
     <button onclick="w3_close()" class="w3-button w3-display-topright w3-text-white" style="font-size:20px;">&times;</button>
   </div>
   <div class="w3-padding-64 w3-text-light-grey w3-large" style="font-weight:bold">
     <a href="#home" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
     <a href="#cv" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Brief CV</a>
-    <a href=publications.php class="w3-bar-item w3-button"><i class="fa fa-book"></i> Publications</a>
+    <a href="publications.php" class="w3-bar-item w3-button"><i class="fa fa-book"></i> Publications</a>
     <a href="#grants" class="w3-bar-item w3-button"><i class="fa fa-money-bill"></i> Grants</a>
     <a href="#teaching" class="w3-bar-item w3-button"><i class="fa fa-chalkboard-teacher"></i> Teaching</a>
     <a href="#group" class="w3-bar-item w3-button"><i class="fa fa-users"></i> Group</a>
@@ -338,22 +332,20 @@ header("Content-type: text/html; charset=utf-8");
   </div>
 </nav>
 
-<!-- Top menu on small screens -->
+<!-- 小屏幕顶部导航 -->
 <header class="w3-bar w3-top w3-hide-large w3-indigo w3-xlarge">
-   <!-- 修复：移除多余的</font>标签和未闭合的div -->
-   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-indigo w3-ripple w3-left" style="font-stretch: expanded;" onclick="w3_open()">
-     <b>&#9776;</b>
-   </a>
-   <div class="w3-bar-item w3-padding-24"> <b>Manting Xie </b> </div>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-indigo w3-ripple w3-left" onclick="w3_open()">
+    <b>&#9776;</b>
+  </a>
+  <div class="w3-bar-item w3-padding-24"><b>Manting Xie</b></div>
 </header>
 
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<!-- 遮罩层 -->
+<div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer;"></div>
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:180px">
-
-  <!-- Push down content on small screens -->
+<!-- 主内容区 -->
+<div class="w3-main">
+  <!-- 小屏幕内容下移 -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
 
   <!-- The Home Section -->
