@@ -202,6 +202,19 @@ header("Content-type: text/html; charset=utf-8");
       margin-top: 24px;
       text-align: center;
     }
+
+    .journal-sc {
+    font-variant: small-caps;
+    font-style: italic;
+    font-size: 1.08em;
+    font-weight: 600;
+    letter-spacing: 0.4px;/* 轻微拉大字间距，提升辨识度 */
+    }
+
+    .journal-bold-italic {
+    font-style: italic;
+    font-weight: 600; /* 600半粗，不要用700粗体，700太笨重 */
+}
   </style>
   <link rel="icon" type="image/png" href="images/icons.png">
 </head>
@@ -265,128 +278,148 @@ header("Content-type: text/html; charset=utf-8");
       <li>
         <a href="./files/1Bogoliubov/2026-MMS.pdf" target="_blank" class="paper-title">A structure-preserving Fourier spectral method for computing the Bogoliubov-de Gennes excitations of spin-1 Bose-Einstein Condensates</a><br>
         Li, Yu; Li, Zhixuan; <strong>Xie, Manting</strong>*; Zhang, Yong<br>
-        <em>Multiscale Model. Simul.</em>, accepted, 2026.
-      </li>
-      <li>
+        <span class="journal-sc">Multiscale Model. Simul.</span>, 24 (2026), no. 3, 1033-1059.
+              </li>
+<li>
         <a href="./files/1Bogoliubov/2026-JCP.pdf" target="_blank" class="paper-title">Computing the Bogoliubov-de Gennes excitations of two-component Bose-Einstein condensates</a><br>
         <strong>Xie, Manting</strong>; Zhang, Yong<br>
-        <em>J. Comput. Phys.</em>, 556 (2026), Paper No. 114813, 18 pp.
+        <span class="journal-sc">J. Comput. Phys.</span>, 556 (2026), Paper No. 114813, 18 pp.
       </li>
       <li>
         <a href="./files/3EP/2026-SINUM.pdf" target="_blank" class="paper-title">A novel augmented subspace adaptive finite element method for the eigenvalue problem with discontinuous coefficients</a><br>
         <strong>Xie, Manting</strong>; Yue, Meiling<br>
-        <em>SIAM J. Numer. Anal.</em>, accepted, 2026.
+        <span class="journal-sc">SIAM J. Numer. Anal.</span>, 64 (2026), no. 3, 631-655.
       </li>
 
-      <!-- 2023年 -->
+<!-- 2025年 -->
       <li>
-        <a href="./files/2BEC/2023-JSC-Xie.pdf" target="_blank" class="paper-title">An efficient adaptive mesh redistribution method for nonlinear eigenvalue problems in Bose-Einstein condensates</a><br>
-        Xie, Hehu; <strong>Xie, Manting</strong>*; Yin, Xiaobo; Zhao, Gang<br>
-        <em>J. Sci. Comput.</em>, 94 (2023), no. 2, Paper No. 37, 20 pp.
+        <a href="./files/3EP/2025-NMTMA.pdf" target="_blank" class="paper-title">Numerical Analysis of a Second Order Crank-Nicolson
+Mixed Finite ElementMethod for the Swift-Hohenberg Equation</a><br>
+        Li, Hongling; <strong>Xie, Manting</strong>*; Yue, Meiling<br>
+        <span class="journal-sc">Numer. Math. Theor. Meth. Appl.</span>, 18 (2025), no. 4, 947-971.
       </li>
+
+      <!-- 2024年 -->
+      <li>
+        <a href="./files/3EP/2024-BIT.pdf" target="_blank" class="paper-title">Multilevel local defect-correction method for the non-selfadjoint Steklov eigenvalue problems</a><br>
+        Xu, Fei; Wang, Bingyi； <strong>Xie, Manting</strong>*<br>
+        <span class="journal-sc">BIT</span>, 64 (2024), no. 2, Paper No. 21, 36 pp.
+      </li>
+
+
       <li>
         <a href="./files/3EP/2023-NA.pdf" target="_blank" class="paper-title">Local and parallel multigrid method for semilinear Neumann problem with nonlinear boundary condition</a><br>
         Xu, Fei; Wang, Bingyi; <strong>Xie, Manting</strong>*<br>
-        <em>Numer. Algorithms</em>, doi: https://doi.org/10.1007/s11075-023-01643-5.
+        <span class="journal-sc">Numer. Algorithms</span>, 96 (2024), no. 1, 185-210.
       </li>
+
+
+            <!-- 2023年 -->
+      <li>
+        <a href="./files/2BEC/2023-JSC-Xie.pdf" target="_blank" class="paper-title">An efficient adaptive mesh redistribution method for nonlinear eigenvalue problems in Bose-Einstein condensates</a><br>
+        Xie, Hehu; <strong>Xie, Manting</strong>*; Yin, Xiaobo; Zhao, Gang<br>
+        <span class="journal-sc">J. Sci. Comput.</span>, 94 (2023), no. 2, Paper No. 37, 20 pp.
+      </li>
+
+
       <li>
         <a href="./files/3EP/2023-CAMWA.pdf" target="_blank" class="paper-title">A posteriori and superconvergence error analysis for finite element approximation of the Steklov eigenvalue problem</a><br>
         Xiong, Chunguang; <strong>Xie, Manting</strong>*; Luo, Fusheng; Su, Hongling<br>
-        <em>Comput. Math. Appl.</em>, 144 (2023), 90-99.
+        <span class="journal-sc">Comput. Math. Appl.</span>, 144 (2023), 90-99.
       </li>
       <li>
         <a href="./files/3EP/2023-JSC-Xu.pdf" target="_blank" class="paper-title">Multigrid method for nonlinear eigenvalue problems based on Newton iteration</a><br>
         Xu, Fei; <strong>Xie, Manting</strong>; Yue, Meiling<br>
-        <em>J. Sci. Comput.</em>, 94 (2023), no. 2, Paper No. 42, 21 pp.
+        <span class="journal-sc">J. Sci. Comput.</span>, 94 (2023), no. 2, Paper No. 42, 21 pp.
       </li>
 
       <!-- 2022年 -->
       <li>
         <a href="./files/1Bogoliubov/2022-SISC.pdf" target="_blank" class="paper-title">A spectrally accurate numerical method for computing the Bogoliubov-de Gennes excitations of dipolar Bose-Einstein condensates</a><br>
         Tang, Qinglin; <strong>Xie, Manting</strong>; Zhang, Yong; Zhang, Yuqing<br>
-        <em>SIAM J. Sci. Comput.</em>, 44 (2022), no. 1, B100-B121.
+        <span class="journal-sc">SIAM J. Sci. Comput.</span>, 44 (2022), no. 1, B100-B121.
       </li>
       <li>
         <a href="./files/3EP/2022-BIT.pdf" target="_blank" class="paper-title">An efficient adaptive multigrid method for the elasticity eigenvalue problem</a><br>
         Xu, Fei; Huang, Qiumei; <strong>Xie, Manting</strong>*<br>
-        <em>BIT</em>, 62 (2022), no. 4, 2005-2033.
+        <span class="journal-sc">BIT</span>, 62 (2022), no. 4, 2005-2033.
       </li>
       <li>
         <a href="./files/3EP/2022-JSC.pdf" target="_blank" class="paper-title">A new family of mixed method for the biharmonic eigenvalue problem based on the first order equations of Hellan-Herrmann-Johnson type</a><br>
         Li, Yu; <strong>Xie, Manting</strong>; Xiong, Chunguang<br>
-        <em>J. Sci. Comput.</em>, 93 (2022), no. 3, Paper No. 66, 23 pp.
+        <span class="journal-sc">J. Sci. Comput.</span>, 93 (2022), no. 3, Paper No. 66, 23 pp.
       </li>
       <li>
         <a href="./files/3EP/2022-JCAM.pdf" target="_blank" class="paper-title">Convergence and optimality of adaptive multigrid method for multiple eigenvalue problems</a><br>
         Xu, Fei; <strong>Xie, Manting</strong>; Huang, Qiumei; Yue, Meiling; Ma, Hongkun<br>
-        <em>J. Comput. Appl. Math.</em>, 415 (2022), Paper No. 114450, 20 pp.
+        <span class="journal-sc">J. Comput. Appl. Math.</span>, 415 (2022), Paper No. 114450, 20 pp.
       </li>
       <li>
         <a href="./files/3EP/2022-AICM.pdf" target="_blank" class="paper-title">A multilevel Newton's method for the Steklov eigenvalue problem</a><br>
         Yue, Meiling; Xu, Fei; <strong>Xie, Manting</strong>*<br>
-        <em>Adv. Comput. Math.</em>, 48 (2022), no. 3, Paper No. 33, 29 pp.
+        <span class="journal-sc">Adv. Comput. Math.</span>, 48 (2022), no. 3, Paper No. 33, 29 pp.
       </li>
 
       <!-- 2021年 -->
       <li>
         <a href="./files/1Bogoliubov/2021-EAJAM.pdf" target="_blank" class="paper-title">Efficient and accurate computation of the Bogoliubov-de Gennes excitations for the quasi-2D dipolar Bose-Einstein condensates</a><br>
         Zhang, Yuqing; Liu, Xin; <strong>Xie, Manting</strong>*<br>
-        <em>East Asian J. Appl. Math.</em>, 11 (2021), no. 4, 686-707.
+        <span class="journal-sc">East Asian J. Appl. Math.</span>, 11 (2021), no. 4, 686-707.
       </li>
       <li>
         <a href="./files/2BEC/2021-BIT.pdf" target="_blank" class="paper-title">A multigrid method for the ground state solution of Bose-Einstein condensates based on Newton iteration</a><br>
         Xu, Fei; Xie, Hehu; <strong>Xie, Manting</strong>; Yue, Meiling<br>
-        <em>BIT</em>, 61 (2021), no. 2, 645-663.
+        <span class="journal-sc">BIT</span>, 61 (2021), no. 2, 645-663.
       </li>
       <li>
         <a href="./files/3EP/2021-ESAIM.pdf" target="_blank" class="paper-title">A type of full multigrid method for non-selfadjoint Steklov eigenvalue problems in inverse scattering</a><br>
         <strong>Xie, Manting</strong>; Xu, Fei; Yue, Meiling<br>
-        <em>ESAIM Math. Model. Numer. Anal.</em>, 55 (2021), no. 5, 1779-1802.
+        <span class="journal-sc">ESAIM Math. Model. Numer. Anal.</span>, 55 (2021), no. 5, 1779-1802.
       </li>
 
       <!-- 2020年 -->
       <li>
         <a href="./files/3EP/2020-AML.pdf" target="_blank" class="paper-title">Adaptive time-stepping algorithms for molecular beam epitaxy: based on energy or roughness</a><br>
         Luo, Fusheng; Xie, Hehu; <strong>Xie, Manting</strong>; Xu, Fei<br>
-        <em>Appl. Math. Lett.</em>, 99 (2020), 105991, 8 pp.
+        <span class="journal-sc">Appl. Math. Lett.</span>, 99 (2020), 105991, 8 pp.
       </li>
 
       <!-- 2019年 -->
       <li>
         <a href="./files/3EP/2019-JNMCA.pdf" target="_blank" class="paper-title">An efficient multigrid method for semilinear elliptic problems</a> (in Chinese)<br>
         Xie, Hehu; <strong>Xie, Manting</strong>; Zhang, Ning<br>
-        <em>J. Numer. Methods Comput. Appl.</em>, 146 (2019), 55-72.
+        <span class="journal-sc">J. Numer. Methods Comput. Appl.</span>, 146 (2019), 55-72.
       </li>
       <li>
         <a href="./files/2BEC/2019-JSC.pdf" target="_blank" class="paper-title">Computable error estimates for ground state solution of Bose-Einstein condensates</a><br>
         Xie, Hehu; <strong>Xie, Manting</strong>*<br>
-        <em>J. Sci. Comput.</em>, 81 (2019), no. 2, 1072-1087.
+        <span class="journal-sc">J. Sci. Comput.</span>, 81 (2019), no. 2, 1072-1087.
       </li>
 
       <!-- 2018年 -->
       <li>
         <a href="./files/3EP/2018-JJIAMs.pdf" target="_blank" class="paper-title">Explicit lower bounds for Stokes eigenvalue problems by using nonconforming finite elements</a><br>
         <strong>Xie, Manting</strong>; Xie, Hehu; Liu, Xuefeng<br>
-        <em>Jpn. J. Ind. Appl. Math.</em>, 35 (2018), no. 1, 335-354.
+        <span class="journal-sc">Jpn. J. Ind. Appl. Math.</span>, 35 (2018), no. 1, 335-354.
       </li>
 
       <!-- 2017年 -->
       <li>
         <a href="./files/3EP/2017-EAJAM.pdf" target="_blank" class="paper-title">Computable error estimates for a nonsymmetric eigenvalue problem</a><br>
         Xie, Hehu; <strong>Xie, Manting</strong>; Yin, Xiaobo; Yue, Meiling<br>
-        <em>East Asian J. Appl. Math.</em>, 7 (2017), no. 3, 583-602.
+        <span class="journal-sc">East Asian J. Appl. Math.</span>, 7 (2017), no. 3, 583-602.
       </li>
 
       <!-- 2016年（最早） -->
       <li>
         <a href="./files/3EP/2016-SCM.pdf" target="_blank" class="paper-title">A full multigrid method for nonlinear eigenvalue problems</a><br>
         Jia, Shanghui; Xie, Hehu; <strong>Xie, Manting</strong>; Xu, Fei<br>
-        <em>Sci. China Math.</em>, 59 (2016), no. 10, 2037-2048.
+        <span class="journal-sc">Sci. China Math.</span>, 59 (2016), no. 10, 2037-2048.
       </li>
       <li>
         <a href="./files/2BEC/2016-CICP.pdf" target="_blank" class="paper-title">A multigrid method for ground state solution of Bose-Einstein condensates</a><br>
         Xie, Hehu; <strong>Xie, Manting</strong><br>
-        <em>Commun. Comput. Phys.</em>, 19 (2016), no. 3, 648-662.
+        <span class="journal-sc">Commun. Comput. Phys.</span>, 19 (2016), no. 3, 648-662.
       </li>
     </ol>
   </div>
