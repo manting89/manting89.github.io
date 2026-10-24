@@ -1,478 +1,364 @@
 <!DOCTYPE html>
-<?php
-header("Content-type: text/html; charset=utf-8");
-?>
-
-<html>
+<html lang="zh-CN">
 <head>
-  <title>谢满庭 - 天津大学数学学院</title>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
-  <meta name=ProgId content=Word.Document>
-  <meta name=Generator content="Microsoft Word 15">
-  <meta name=Originator content="Microsoft Word 15">
-  <meta name="description" content="谢满庭，天津大学数学学院副教授，研究方向为计算数学、数值分析等">
-  <meta name="keywords" content="谢满庭, 天津大学, 应用数学, 计算数学, 特征值问题, 有限元方法, 玻色-爱因斯坦凝聚">
-  <meta name="author" content="谢满庭" />
-
-  <!-- 引入与英文主页相同的外部资源 -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Oswald">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <style type="text/css">
-    /* 全局样式重置 - 对齐英文主页 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* 基础字体配置 */
-    .w3-sidebar a {font-family: "Roboto", sans-serif; font-size: 14px !important;}
-    body, h1, h2, h3, h4, h5, h6, .w3-wide {font-family: "Montserrat", sans-serif;}
-    .chinese {font-size: 100%;}
-    
-    /* 自定义配色方案 - 与英文主页一致 */
-    :root {
-      --primary-color: #3f51b5; /* 主靛蓝 */
-      --primary-light: #757de8; /* 浅靛蓝 */
-      --primary-dark: #002984; /* 深靛蓝 */
-      --secondary-color: #f5f5f5; /* 浅灰背景 */
-      --text-dark: #333333; /* 深色文本 */
-      --text-light: #ffffff; /* 浅色文本 */
-      --accent-color: #ff4081; /* 强调色（粉色） */
-      --link-color: #447ec9; /* 链接色 */
-    }
-
-    /* 侧边栏优化 - 与英文主页一致 */
-    #mySidebar {
-      background-color: var(--primary-color) !important;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      width: 180px !important; /* 加宽侧边栏到180px */
-    }
-    #mySidebar .w3-bar-item {
-      transition: background-color 0.2s ease;
-      border-radius: 4px;
-      margin: 0 4px 4px 4px !important;
-      padding: 8px 10px !important;
-      white-space: nowrap;
-      color: var(--text-light) !important;
-    }
-    #mySidebar .w3-bar-item i {
-      width: 20px;
-      text-align: center;
-      margin-right: 6px !important;
-    }
-    #mySidebar .w3-bar-item:hover {
-      background-color: var(--primary-light) !important;
-      color: var(--text-light) !important;
-    }
-    #mySidebar h3 {
-      color: var(--text-light);
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      padding-bottom: 8px;
-      margin-bottom: 16px;
-      font-size: 16px !important;
-      text-align: center;
-    }
-
-    /* 顶部导航优化（小屏幕） */
-    .w3-top {
-      background-color: var(--primary-color) !important;
-    }
-    .w3-top .w3-button {
-      color: var(--text-light) !important;
-    }
-    .w3-top .w3-bar-item {
-      color: var(--text-light) !important;
-    }
-
-    /* 主内容区优化 - 适配加宽的侧边栏 */
-    .w3-main {
-      margin-left: 180px !important;
-      padding: 0 24px;
-      color: var(--text-dark);
-    }
-
-    /* 区块样式优化 - 与英文主页一致 */
-    .section-card {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 24px !important;
-      margin-bottom: 24px !important;
-      transition: box-shadow 0.3s ease;
-    }
-    .section-card:hover {
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    }
-    .section-card h2 {
-      color: var(--primary-dark);
-      border-bottom: 2px solid var(--primary-color);
-      padding-bottom: 12px;
-      margin-bottom: 20px;
-      display: inline-block;
-    }
-    .section-card h3 {
-      color: var(--primary-color);
-      margin: 20px 0 12px 0;
-    }
-
-    /* 个人信息区优化 */
-    #home {
-      padding: 40px 24px !important;
-      text-align: left !important;
-    }
-    #home .profile-photo {
-      float: left;
-      width: 220px;
-      max-width: 100%;
-      border-radius: 8px;
-      margin-right: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    #home .profile-info {
-      overflow: hidden;
-      padding-top: 16px;
-    }
-    #home .profile-name {
-      font-family: 'Oswald', sans-serif;
-      font-size: 35px;
-      color: var(--primary-dark);
-      margin-bottom: 12px;
-    }
-    #home .profile-contact {
-      line-height: 1.8;
-      margin-top: 16px;
-    }
-    #home .profile-links a {
-      color: var(--link-color);
-      text-decoration: none;
-      margin-right: 16px;
-      transition: color 0.2s ease;
-    }
-    #home .profile-links a:hover {
-      color: var(--accent-color);
-      text-decoration: underline;
-    }
-    #home .profile-links a i {
-      margin-right: 6px;
-      font-size: 1.1em;
-      vertical-align: middle;
-    }
-
-    /* 列表样式优化 */
-    ul, ol {
-      margin-left: 24px;
-      line-height: 1.8;
-    }
-    li {
-      margin-bottom: 8px;
-    }
-
-    /* 链接样式优化 */
-    a {
-      color: var(--link-color);
-      text-decoration: none;
-    }
-    a:hover {
-      color: var(--accent-color);
-      text-decoration: underline;
-    }
-
-    /* 页脚样式 - 与英文主页一致 */
-    footer {
-      background-color: var(--primary-dark);
-      color: var(--text-light);
-      padding: 24px;
-      text-align: center;
-      margin-top: 40px;
-      border-radius: 8px 8px 0 0;
-    }
-    footer a {
-      color: var(--text-light);
-      text-decoration: underline;
-    }
-
-    /* 响应式适配优化 - 与英文主页一致 */
-    @media (max-width: 992px) {
-      .w3-main {
-        margin-left: 0 !important;
-        padding: 0 16px;
-      }
-      #mySidebar {
-        width: 200px !important;
-      }
-      #home {
-        text-align: center !important;
-      }
-      #home .profile-photo {
-        float: none;
-        margin: 0 auto 24px auto;
-        display: block;
-      }
-      #home .profile-info {
-        text-align: center;
-      }
-      #home .profile-links a {
-        display: inline-block;
-        margin: 8px 8px 0 8px;
-      }
-    }
-
-    /* 平滑滚动 */
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+  <title>谢满庭 | 天津大学数学学院</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="description" content="谢满庭，天津大学数学学院副教授、院长助理，研究方向为计算数学、偏微分方程特征值问题数值方法、有限元方法及玻色-爱因斯坦凝聚。">
+  <meta name="keywords" content="谢满庭, 天津大学, 数学学院, 应用数学, 计算数学, 特征值问题, 有限元方法, 玻色-爱因斯坦凝聚">
+  <meta name="author" content="谢满庭">
   <link rel="icon" type="image/png" href="images/icons.png">
+  <link rel="stylesheet" href="homepage.css">
 </head>
+<body>
 
-<body class="w3-content" style="max-width:1200px;margin:0 auto;background-color:#f9f9f9">
-
-<!-- 侧边栏/菜单 -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-top w3-right" style="z-index:3;" id="mySidebar">
-  <div class="w3-container w3-display-container w3-padding-16">
-    <h3><b>谢满庭</b></h3>
+<!-- ===================== 顶栏 ===================== -->
+<header class="topbar" id="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="chinese.html">
+      <img class="brand-avatar" src="./images/mtxie.jpg" alt="谢满庭">
+      <span class="brand-text">
+        <span class="brand-en">谢满庭</span>
+        <span class="brand-cn">MANTING XIE</span>
+      </span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#home">首页</a>
+      <a href="index.html#news">新闻</a>
+      <a href="#cv">简历</a>
+      <a href="publications.html">论文</a>
+      <a href="#grants">基金</a>
+      <a href="#teaching">教学</a>
+      <a href="#group">团队</a>
+      <a href="index.html#links">链接</a>
+      <a class="lang" href="index.html">English</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="菜单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <div class="w3-padding-64 w3-text-light-grey w3-large" style="font-weight:bold">
-    <!-- 将 English 改为 Homepage，指向英文主页 home.php -->
-    <a href="index.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
-    <a href="index.html#news" class="w3-bar-item w3-button"><i class="fa fa-bullhorn"></i> News</a>
-    <a href="index.html#cv" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Brief CV</a>
-    <a href="publications.html" class="w3-bar-item w3-button"><i class="fa fa-book"></i> Publications</a>
-    <a href="index.html#grants" class="w3-bar-item w3-button"><i class="fa fa-money-bill"></i> Grants</a>
-    <a href="index.html#teaching" class="w3-bar-item w3-button"><i class="fa fa-chalkboard-teacher"></i> Teaching</a>
-    <a href="index.html#group" class="w3-bar-item w3-button"><i class="fa fa-users"></i> Group</a>
-    <a href="index.html#uselink" class="w3-bar-item w3-button"><i class="fa fa-link"></i> Useful Links</a>
-    <a href="chinese.html" class="w3-bar-item w3-button" style="background-color: var(--primary-light) !important;"><i class="fa fa-language"></i> 中文版</a>
-  </div>
-</nav>
-
-<!-- 小屏顶部菜单 -->
-<header class="w3-bar w3-top w3-hide-large w3-xlarge">
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-12 w3-ripple w3-left" onclick="w3_open()">
-    <b>&#9776;</b>
-  </a>
-  <div class="w3-bar-item w3-padding-12"> <b>谢满庭</b> </div>
+  <div class="progress" id="progress"></div>
 </header>
 
-<!-- 小屏侧边栏遮罩层 -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="关闭侧边菜单" id="myOverlay"></div>
+<main>
 
-<!-- 主内容区 -->
-<div class="w3-main">
-  <!-- 小屏内容下移 -->
-  <div class="w3-hide-large" style="margin-top:83px"></div>
-
-  <!-- 个人信息模块 -->
-  <div class="section-card w3-container" id="home">
-    <img src="./images/mtxie.jpg" alt="谢满庭教授照片" class="profile-photo">
-    <div class="profile-info">
-      <div class="profile-name"><b>谢满庭</b></div>
-      <h4 style="font-size: 18px;margin-bottom: 16px;">
-        <strong><a href="https://math.tju.edu.cn/info/1715/5579.htm"target="_blank">副教授</a></strong>
-      </h4>
-      <p>
-        <a href="https://www.tju.edu.cn/" target="_blank">天津大学</a>
-        <a href="https://math.tju.edu.cn/" target="_blank">数学学院</a> 院长助理
+<!-- ===================== 个人信息 ===================== -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <p class="eyebrow">天津大学 &middot; 数学学院</p>
+      <h1 class="hero-name">谢满庭<span class="cn">MANTING XIE</span></h1>
+      <p class="hero-role">
+        <strong><a href="https://math.tju.edu.cn/info/1715/5579.htm" target="_blank" rel="noopener">副教授</a></strong>
+        &nbsp;&middot;&nbsp; 院长助理 <br>
+        <a href="https://www.tju.edu.cn/" target="_blank" rel="noopener">天津大学</a>
+        <a href="https://math.tju.edu.cn/" target="_blank" rel="noopener">数学学院</a>
       </p>
-      <div class="profile-contact">
-        <p><strong>办公室:</strong> 58教学楼403室</p>
-        <p><strong>地址:</strong> 天津市津南区雅观路135号</p>
-        <p><strong>邮箱:</strong> mtxie[AT]tju.edu.cn, xiemanting[AT]lsec.cc.ac.cn</p>
+      <p class="hero-bio">
+        主要从事<strong>科学计算与数值分析</strong>研究，聚焦偏微分方程<strong>特征值问题</strong>的高效数值方法、
+        <strong>有限元方法</strong>与逼近理论，以及<strong>玻色&ndash;爱因斯坦凝聚</strong>的数学与数值研究
+        （Bogoliubov&ndash;de Gennes 集体激发、基态与稳态）。
+      </p>
+
+      <div class="hero-meta">
+        <div><span class="k">办公室</span><span>58教学楼 403 室</span></div>
+        <div><span class="k">地址</span><span>天津市津南区雅观路 135 号，300350</span></div>
+        <div><span class="k">邮箱</span><span><a href="mailto:mtxie@tju.edu.cn">mtxie[AT]tju.edu.cn</a>，<a href="mailto:xiemanting@lsec.cc.ac.cn">xiemanting[AT]lsec.cc.ac.cn</a></span></div>
       </div>
-      <div class="profile-links">
-        <a href="https://scholar.google.com/citations?user=-kq-FyoAAAAJ&hl=en" target="_blank">
-          <i class="fab fa-google-scholar"></i> Google Scholar
+
+      <div class="hero-actions">
+        <a class="btn primary" href="https://scholar.google.com/citations?user=-kq-FyoAAAAJ&hl=en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/></svg>
+          Google Scholar
         </a>
-        <a href="https://mathscinet.ams.org/mathscinet/author?authorId=1157382" target="_blank">
-        <span style="display:inline-block; width:12px; height:12px; background-color:var(--primary-color); border-radius:50%; margin-right:8px; vertical-align:middle;"></span>Mathscinet
+        <a class="btn" href="https://mathscinet.ams.org/mathscinet/author?authorId=1157382" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18V6l8 6.5L20 6v12"/></svg>
+          MathSciNet
         </a>
-        <a href="https://www.researchgate.net/profile/Manting-Xie" target="_blank">
-          <i class="fab fa-researchgate"></i> Research Gate
+        <a class="btn" href="https://orcid.org/0000-0003-3437-9576" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><text x="12" y="16.2" text-anchor="middle" font-size="9.5" font-weight="700" fill="currentColor" font-family="system-ui, sans-serif">iD</text></svg>
+          ORCID
         </a>
-        <a href="https://orcid.org/0000-0003-3437-9576" target="_blank">
-          <i class="fab fa-orcid"></i> ORCID
+        <a class="btn" href="https://www.researchgate.net/profile/Manting-Xie" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 16.5V7.5h3.4a2.5 2.5 0 0 1 0 5H8M11.6 12.5 14.8 16.5"/></svg>
+          ResearchGate
         </a>
       </div>
     </div>
+
+    <figure class="hero-photo">
+      <img src="./images/mtxie.jpg" alt="谢满庭">
+      <figcaption>谢满庭 &mdash; 天津大学</figcaption>
+    </figure>
   </div>
+</section>
 
-  <!-- 简历模块 -->
-  <div class="section-card w3-container" id="cv">
-    <h2><strong>简历</strong></h2>
-    
-    <h3><strong>教育经历</strong></h3>
-    <ul>
-      <li>2012年09月-2017年06月 &nbsp; <a href="https://www.ucas.ac.cn/" target="_blank">中国科学院大学</a> <a href="http://icmsec.cc.ac.cn/" target="_blank">计算数学所</a>，<strong>博士</strong>，导师: <a href="http://lsec.cc.ac.cn/~linq/chinese_version.html" target="_blank">林群 院士</a>、<a href="http://lsec.cc.ac.cn/~hhxie/" target="_blank">谢和虎 研究员</a></li>
-      <li>2008年09月-2012年06月 &nbsp; <a href="https://www.sdnu.edu.cn/" target="_blank">山东师范大学</a> <a href="http://www.maths.sdnu.edu.cn" target="_blank">数学科学学院</a>，<strong>本科</strong></li>
-    <!--  <li>2005/09-2008/06 &nbsp; 河北昌黎第一中学</li> -->
-    </ul>
+<!-- ===================== 简历 ===================== -->
+<section class="section" id="cv">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span>
+      <h2>简历</h2>
+      <span class="sec-rule"></span>
+    </div>
 
-    <h3><strong>工作经历</strong></h3>
-    <ul>
-      <li>2025年04月-至今 &nbsp; 天津大学数学学院 &nbsp; 副教授</li>
-      <li>2023年07月-2025年03月 &nbsp; 天津大学应用数学中心 &nbsp; 副教授</li>
-      <li>2017年07月-2023年06月 &nbsp; 天津大学应用数学中心 &nbsp; 讲师</li>
-    </ul>
+    <h3 class="sub reveal">教育经历</h3>
+    <div class="entries">
+      <div class="entry reveal">
+        <span class="when">2012.09 &ndash; 2017.06</span>
+        <span class="what">
+          <span class="ttl">博士 &middot; 计算数学</span>
+          <a href="https://www.ucas.ac.cn/" target="_blank" rel="noopener">中国科学院大学</a>
+          <a href="http://icmsec.cc.ac.cn/" target="_blank" rel="noopener">计算数学所</a><br>
+          导师：<a href="http://lsec.cc.ac.cn/~linq/chinese_version.html" target="_blank" rel="noopener">林群 院士</a>、
+          <a href="http://lsec.cc.ac.cn/~hhxie/" target="_blank" rel="noopener">谢和虎 研究员</a>
+        </span>
+      </div>
+      <div class="entry reveal">
+        <span class="when">2008.09 &ndash; 2012.06</span>
+        <span class="what">
+          <span class="ttl">本科 &middot; 数学</span>
+          <a href="https://www.sdnu.edu.cn/" target="_blank" rel="noopener">山东师范大学</a>
+          <a href="http://www.maths.sdnu.edu.cn" target="_blank" rel="noopener">数学科学学院</a>
+        </span>
+      </div>
+    </div>
 
-    <h3><strong>研究方向</strong></h3>
-    <ul>
-      <li>玻色-爱因斯坦凝聚体的数学与数值研究，聚焦Bogoliubov-de Gennes集体激发、基态/稳态</li>
-      <li>偏微分方程（PDE）特征值问题的数值解法</li>
-      <li>有限元方法、逼近理论及其应用</li>
-      <li>科学计算、数值分析及应用数学</li>
-    </ul>
-    <!--
-    <h3><strong>获奖情况</strong></h3>
-    <ul>
-      <li>2021年，《East Asian J. Appl. Math.》期刊特色文章奖</li>
-      <li>2017年，中国科学院朱李月华奖学金</li>
-      <li>2016年，中国科学院数学与系统科学研究院院长奖学金特等奖</li>
-      <li>2012年，山东省优秀毕业生（山东师范大学）</li>
-    </ul>
-   -->
+    <h3 class="sub reveal">工作经历</h3>
+    <div class="entries">
+      <div class="entry reveal">
+        <span class="when">2025.04 &ndash; 至今</span>
+        <span class="what"><span class="ttl">副教授</span>天津大学数学学院</span>
+      </div>
+      <div class="entry reveal">
+        <span class="when">2023.07 &ndash; 2025.03</span>
+        <span class="what"><span class="ttl">副教授</span>天津大学应用数学中心</span>
+      </div>
+      <div class="entry reveal">
+        <span class="when">2017.07 &ndash; 2023.06</span>
+        <span class="what"><span class="ttl">讲师</span>天津大学应用数学中心</span>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">研究方向</h3>
+    <div class="grid-2">
+      <div class="interest reveal">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="2.4"/><ellipse cx="12" cy="12" rx="10" ry="4.4"/><ellipse cx="12" cy="12" rx="10" ry="4.4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.4" transform="rotate(120 12 12)"/></svg>
+        </span>
+        <div>
+          <h4>玻色&ndash;爱因斯坦凝聚</h4>
+          <p>凝聚体的数学与数值研究，聚焦 Bogoliubov&ndash;de Gennes 集体激发、基态与稳态。</p>
+        </div>
+      </div>
+      <div class="interest reveal">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 19h18"/><path d="M3 19V5"/><path d="M3 15c3-9 6 6 9-3s5 5 6 2"/></svg>
+        </span>
+        <div>
+          <h4>特征值问题</h4>
+          <p>偏微分方程（PDE）特征值问题的数值解法，含自适应与多重网格方法。</p>
+        </div>
+      </div>
+      <div class="interest reveal">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 18 12 4l9 14"/><path d="M3 18h18"/><path d="M12 4v14"/><path d="M7.5 11h9"/></svg>
+        </span>
+        <div>
+          <h4>有限元方法</h4>
+          <p>有限元方法、逼近理论及其应用，含后验误差估计与超收敛分析。</p>
+        </div>
+      </div>
+      <div class="interest reveal">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="3"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
+        </span>
+        <div>
+          <h4>科学计算</h4>
+          <p>科学计算、数值分析及一般应用数学问题。</p>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- 基金项目模块 -->
-  <div class="section-card w3-container" id="grants">
-    <h2><strong>基金项目</strong></h2>
-    <ul>
-      <li>2026年01月-2029年12月，自旋轨道耦合偶极玻色-爱因斯坦凝聚态特征值问题的理论分析与数值方法，国家自然科学基金面上项目，项目号：12571437，（<span style="font-weight: 700;">主持</span>）</li>
-      <li>2023年01月-2026年12月，偶极液滴玻色爱因斯坦凝聚态的数学分析和计算方法，国家自然科学基金面上项目，项目号：12271400，（参与）</li>
-      <li>2021年01月-2023年12月，旋转偶极玻色-爱因斯坦凝聚态稳态的高效有限元方法研究，国家自然科学基金青年项目，项目号：12001402，（<span style="font-weight: 700;">主持</span>）</li>
-      <li>2021年01月-2024年12月，几类偏微分方程系数反问题的算子分裂方法，国家自然科学基金面上项目，项目号：12071343，（参与）</li>
-    </ul>
+<!-- ===================== 基金项目 ===================== -->
+<section class="section alt" id="grants">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <h2>基金项目</h2>
+      <span class="sec-rule"></span>
+    </div>
+
+    <div class="entries">
+      <div class="card grant reveal">
+        <span class="years">2026 &ndash; 2029</span>
+        <div>
+          <div class="g-title">自旋轨道耦合偶极玻色&ndash;爱因斯坦凝聚态特征值问题的理论分析与数值方法</div>
+          <div class="g-meta">国家自然科学基金面上项目，项目号：12571437 &nbsp;&middot;&nbsp; 主持</div>
+        </div>
+      </div>
+      <div class="card grant reveal">
+        <span class="years">2023 &ndash; 2026</span>
+        <div>
+          <div class="g-title">偶极液滴玻色&ndash;爱因斯坦凝聚态的数学分析和计算方法</div>
+          <div class="g-meta">国家自然科学基金面上项目，项目号：12271400 &nbsp;&middot;&nbsp; 参与</div>
+        </div>
+      </div>
+      <div class="card grant reveal">
+        <span class="years">2021 &ndash; 2023</span>
+        <div>
+          <div class="g-title">旋转偶极玻色&ndash;爱因斯坦凝聚态稳态的高效有限元方法研究</div>
+          <div class="g-meta">国家自然科学基金青年项目，项目号：12001402 &nbsp;&middot;&nbsp; 主持</div>
+        </div>
+      </div>
+      <div class="card grant reveal">
+        <span class="years">2021 &ndash; 2024</span>
+        <div>
+          <div class="g-title">几类偏微分方程系数反问题的算子分裂方法</div>
+          <div class="g-meta">国家自然科学基金面上项目，项目号：12071343 &nbsp;&middot;&nbsp; 参与</div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- 教学工作模块 -->
-  <div class="section-card w3-container" id="teaching">
-    <h2><strong>教学工作</strong></h2>
-    
-    <h3><strong>本科生课程</strong></h3>
-    <ul>
-      <li>微积分I @ 天津大学 (TJU)，96课时，2025秋</li>
-      <li>数值线性代数 @ 天津大学 (TJU)，48课时，2025秋</li>
-      <li>数值线性代数 @ 天津大学 (TJU)，48课时，2024秋</li>
-      <li>数值分析 @ 天津大学 (TJU)，96课时，2023春</li>
-      <li>高等数学(2B) @ 天津大学，80课时，2022春</li>
-      <li>数学分析专题(B) @ 天津大学，48课时，2021春</li>
-      <li>线性代数及其应用 @ 天津大学，56课时，2020春</li>
-      <li>线性代数及其应用 @ 天津大学，56课时，2019秋</li>
-      <li>线性代数及其应用 @ 天津大学，76课时，2018秋</li>
-      <li>线性代数及其应用 @ 天津大学，56课时，2018春</li>
-      <li>概率论 @ 天津大学，32课时，2017秋</li>
-    </ul>
+<!-- ===================== 教学工作 ===================== -->
+<section class="section" id="teaching">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03</span>
+      <h2>教学工作</h2>
+      <span class="sec-rule"></span>
+    </div>
 
-    <h3><strong>研究生课程</strong></h3>
-    <ul>
-      <li>工程数学基础 @ 天津大学，80课时，2018春</li>
-    </ul>
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3 class="sub">本科生课程</h3>
+        <div class="course"><span class="yr">2025 秋</span><span>微积分 I</span><span class="hrs">96 课时</span></div>
+        <div class="course"><span class="yr">2025 秋</span><span>数值线性代数</span><span class="hrs">48 课时</span></div>
+        <div class="course"><span class="yr">2024 秋</span><span>数值线性代数</span><span class="hrs">48 课时</span></div>
+        <div class="course"><span class="yr">2023 春</span><span>数值分析</span><span class="hrs">96 课时</span></div>
+        <div class="course"><span class="yr">2022 春</span><span>高等数学 (2B)</span><span class="hrs">80 课时</span></div>
+        <div class="course"><span class="yr">2021 春</span><span>数学分析专题 (B)</span><span class="hrs">48 课时</span></div>
+        <div class="course"><span class="yr">2020 春</span><span>线性代数及其应用</span><span class="hrs">56 课时</span></div>
+        <div class="course"><span class="yr">2019 秋</span><span>线性代数及其应用</span><span class="hrs">56 课时</span></div>
+        <div class="course"><span class="yr">2018 秋</span><span>线性代数及其应用</span><span class="hrs">76 课时</span></div>
+        <div class="course"><span class="yr">2018 春</span><span>线性代数及其应用</span><span class="hrs">56 课时</span></div>
+        <div class="course"><span class="yr">2017 秋</span><span>概率论</span><span class="hrs">32 课时</span></div>
+      </div>
+
+      <div class="card reveal">
+        <h3 class="sub">研究生课程</h3>
+        <div class="course"><span class="yr">2018 春</span><span>工程数学基础</span><span class="hrs">80 课时</span></div>
+
+        <h3 class="sub">说明</h3>
+        <p style="font-size:14.5px;color:var(--ink-soft)">
+          以上课程均在天津大学（TJU）开设。&ldquo;春&rdquo;表示春季学期，&ldquo;秋&rdquo;表示秋季学期。
+        </p>
+      </div>
+    </div>
   </div>
+</section>
 
-<!-- The Group Section (中文版) -->
-<div class="section-card w3-container" id="group">
-  <h2><strong>合作者与学生</strong></h2>
-  
-  <!-- 第一部分：合作者（去重+更新） -->
-  <h3><strong>合作者</strong></h3>
-  <ul>
-    <li>李瑜 (讲师，天津财经大学)</li>
-    <li>黄秋梅 (教授，北京工业大学)</li>
-    <li>唐庆粦 (教授，四川大学)</li>
-    <li>谢和虎 (教授，中国科学院计算数学研究所)</li>
-    <li>徐飞 (副教授，北京工业大学)</li>
-    <li>阴小波 (教授，华中师范大学)</li>
-    <li>岳美玲 (副教授，北京工商大学)</li>
-    <li>张勇 (教授，天津大学)</li>
-  </ul>
+<!-- ===================== 合作者与学生 ===================== -->
+<section class="section alt" id="group">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04</span>
+      <h2>合作者与学生</h2>
+      <span class="sec-rule"></span>
+    </div>
 
-  <!-- 第二部分：研究生（内容不变） -->
-  <h3><strong>研究生</strong></h3>
-  <ul>
-    <li>2025，纪奕扬 & 曹佳萌 & 张令奇 @ 天津大学</li>
-    <li>2024，丁一 & 高杰 @ 天津大学</li>
-  </ul>
+    <div class="card reveal" style="margin-bottom:18px">
+      <h3 class="sub">合作者</h3>
+      <div class="people">
+        <span class="person"><span class="av">李瑜</span>李瑜 <span class="aff">天津财经大学，讲师</span></span>
+        <span class="person"><span class="av">黄</span>黄秋梅 <span class="aff">北京工业大学，教授</span></span>
+        <span class="person"><span class="av">唐</span>唐庆粦 <span class="aff">四川大学，教授</span></span>
+        <span class="person"><span class="av">谢</span>谢和虎 <span class="aff">中科院计算数学所，教授</span></span>
+        <span class="person"><span class="av">徐</span>徐飞 <span class="aff">北京工业大学，副教授</span></span>
+        <span class="person"><span class="av">阴</span>阴小波 <span class="aff">华中师范大学，教授</span></span>
+        <span class="person"><span class="av">岳</span>岳美玲 <span class="aff">北京工商大学，副教授</span></span>
+        <span class="person"><span class="av">张</span>张勇 <span class="aff">天津大学，教授</span></span>
+      </div>
+    </div>
 
-  <!-- 第三部分：合作培养学生（新增内容） -->
-  <h3><strong>合作学生</strong></h3>
-  <ul>
-    <li>张少波 (博士，四川大学)</li>
-    <li>刘欣 (博士，宁波东方理工大学)</li>
-    <li>李智轩 (四川大学)</li>
-  </ul>
+    <div class="card reveal" style="margin-bottom:18px">
+      <h3 class="sub">研究生</h3>
+      <div class="people">
+        <span class="person"><span class="av">25</span>纪奕扬 &middot; 曹佳萌 &middot; 张令奇 <span class="aff">天津大学</span></span>
+        <span class="person"><span class="av">24</span>丁一 &middot; 高杰 <span class="aff">天津大学</span></span>
+      </div>
+    </div>
 
-  <!-- 第四部分：本科生（标题简化） -->
-  <h3><strong>本科生</strong></h3>
-  <ul>
-    <li>2025，王哲涵 & 金浩宇 @ 天津大学</li>
-    <li>2024，纪奕扬 & 吴苏湘 @ 天津大学</li>
-    <li>2023，范洪玮 @ 天津大学</li>
-    <li>2022，史缘坤 & 刘千龙 @ 天津大学</li>
-    <li>2021，郝运 & 李才奇 @ 天津大学</li>
-  </ul>
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3 class="sub">合作学生</h3>
+        <div class="people">
+          <span class="person"><span class="av">张</span>张少波 <span class="aff">四川大学，博士</span></span>
+          <span class="person"><span class="av">刘</span>刘欣 <span class="aff">宁波东方理工大学，博士</span></span>
+          <span class="person"><span class="av">李</span>李智轩 <span class="aff">四川大学</span></span>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3 class="sub">本科生</h3>
+        <div class="people">
+          <span class="person"><span class="av">25</span>王哲涵 &middot; 金浩宇 <span class="aff">天津大学</span></span>
+          <span class="person"><span class="av">24</span>纪奕扬 &middot; 吴苏湘 <span class="aff">天津大学</span></span>
+          <span class="person"><span class="av">23</span>范洪玮 <span class="aff">天津大学</span></span>
+          <span class="person"><span class="av">22</span>史缘坤 &middot; 刘千龙 <span class="aff">天津大学</span></span>
+          <span class="person"><span class="av">21</span>郝运 &middot; 李才奇 <span class="aff">天津大学</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== 访问计数 ===================== -->
+<div class="visitors">
+  <div class="wrap visitors-inner">
+    <span class="visitor-count">
+      <img class="sc-badge" width="68" height="16" alt="累计访问量"
+           src="https://c.statcounter.com/12945687/0/f1c715c5/0/"
+           referrerPolicy="no-referrer-when-downgrade"
+           onerror="this.style.display='none';var f=document.getElementById('bz-fallback');if(f)f.style.display='inline-flex';">
+    </span>
+    <span class="vstat bz-fallback" id="bz-fallback">
+      <span class="vnum" id="busuanzi_value_site_pv">&ndash;</span><span class="vlab">总访问量</span>
+    </span>
+  </div>
 </div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  <!-- 页脚 - 与英文主页一致 -->
-  <footer>
-    <p>&copy; 2025 谢满庭 | 天津大学数学学院</p>
-    <p>最后更新: <script>document.write(new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate());</script></p>
-  </footer>
+<!-- ===================== 页脚 ===================== -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <div class="f-name">谢满庭 &middot; Manting Xie</div>
+      <div class="f-sub">天津大学数学学院 &middot; 天津市津南区雅观路 135 号，300350</div>
+    </div>
+    <div class="f-meta">
+      <div>&copy; <span id="year">2026</span> 谢满庭</div>
+      <div>最后更新：<span id="updated"></span></div>
+    </div>
+  </div>
+</footer>
 
-<!-- 结束主内容区 -->
-</div>
+<button class="to-top" id="toTop" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
 
+<script src="homepage.js"></script>
 <script>
-// 侧边栏开关
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
-
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-
-// 平滑滚动（增强版）
-$(document).ready(function(){
-  // 侧边栏链接点击关闭侧边栏（小屏幕）
-  $('.w3-bar-item').click(function() {
-    if ($(window).width() < 992) {
-      w3_close();
-    }
-  });
-
-  // 图片懒加载
-  $("img").each(function() {
-    $(this).attr("loading", "lazy");
-  });
-});
-
-// 页面加载时确保侧边栏初始状态正确
-window.onload = function() {
-  if (window.innerWidth <= 992) {
-    w3_close();
-  } else {
-    document.getElementById("mySidebar").style.display = "block";
-  }
-};
-
-// 窗口大小变化时适配侧边栏
-window.onresize = function() {
-  if (window.innerWidth > 992) {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "none";
-  } else {
-    w3_close();
-  }
-};
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var d = new Date(), p = function (n) { return n < 10 ? '0' + n : n; };
+  document.getElementById('updated').textContent = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
 </script>
-
 </body>
 </html>
