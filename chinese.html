@@ -9,6 +9,7 @@
   <meta name="keywords" content="谢满庭, 天津大学, 数学学院, 应用数学, 计算数学, 特征值问题, 有限元方法, 玻色-爱因斯坦凝聚">
   <meta name="author" content="谢满庭">
   <link rel="icon" type="image/png" href="images/icons.png">
+  <script>try{var t=localStorage.getItem('mx-theme');if(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
   <link rel="stylesheet" href="homepage.css">
 </head>
 <body>
@@ -34,6 +35,10 @@
       <a href="index.html#links">链接</a>
       <a class="lang" href="index.html">English</a>
     </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="切换深浅色模式">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+    </button>
     <button class="nav-toggle" id="navToggle" aria-label="菜单" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -46,13 +51,18 @@
 <!-- ===================== 个人信息 ===================== -->
 <section class="hero" id="home">
   <div class="hero-grid"></div>
+  <div class="hero-fx" aria-hidden="true">
+    <span class="f1">i&#8463;&thinsp;&part;&psi;/&part;t = &minus;&frac12;&nabla;&sup2;&psi; + W(|&psi;|&sup2;)&psi;</span>
+    <span class="f2">&minus;&nabla;&middot;(A&nabla;u) = &lambda;u ,&nbsp; u|<sub>&part;&Omega;</sub> = 0</span>
+    <span class="f3">(&#8466; + &#8462;)&eta; = &lambda;&eta;</span>
+  </div>
   <div class="wrap hero-inner">
     <div>
       <p class="eyebrow">天津大学 &middot; 数学学院</p>
       <h1 class="hero-name">谢满庭<span class="cn">MANTING XIE</span></h1>
       <p class="hero-role">
         <strong><a href="https://math.tju.edu.cn/info/1715/5579.htm" target="_blank" rel="noopener">副教授</a></strong>
-        &nbsp;&middot;&nbsp; 院长助理 <br>
+        &nbsp;&middot;&nbsp; <strong>院长助理</strong> <br>
         <a href="https://www.tju.edu.cn/" target="_blank" rel="noopener">天津大学</a>
         <a href="https://math.tju.edu.cn/" target="_blank" rel="noopener">数学学院</a>
       </p>
@@ -69,7 +79,7 @@
       </div>
 
       <div class="hero-actions">
-        <a class="btn primary" href="https://scholar.google.com/citations?user=-kq-FyoAAAAJ&hl=en" target="_blank" rel="noopener">
+        <a class="btn" href="https://scholar.google.com/citations?user=-kq-FyoAAAAJ&hl=en" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/></svg>
           Google Scholar
         </a>
@@ -128,6 +138,10 @@
 
     <h3 class="sub reveal">工作经历</h3>
     <div class="entries">
+      <div class="entry reveal">
+        <span class="when">2026.05 &ndash; 至今</span>
+        <span class="what"><span class="ttl">院长助理</span>天津大学数学学院</span>
+      </div>
       <div class="entry reveal">
         <span class="when">2025.04 &ndash; 至今</span>
         <span class="what"><span class="ttl">副教授</span>天津大学数学学院</span>

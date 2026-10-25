@@ -7,6 +7,35 @@
   var navToggle = document.getElementById('navToggle');
   var toTop = document.getElementById('toTop');
 
+  /* theme toggle（初始主题由各页面 <head> 里的内联脚本设置，避免闪烁） */
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var root = document.documentElement;
+      var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', t);
+      try { localStorage.setItem('mx-theme', t); } catch (e) {}
+    });
+  }
+
+  /* portrait tilt（仅桌面精确指针且未开启减少动效时生效） */
+  var photo = document.querySelector('.hero-photo');
+  if (photo && window.matchMedia
+      && matchMedia('(hover: hover) and (pointer: fine)').matches
+      && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var pimg = photo.querySelector('img');
+    photo.addEventListener('mousemove', function (e) {
+      var r = photo.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - .5;
+      var y = (e.clientY - r.top) / r.height - .5;
+      if (pimg) pimg.style.transform =
+        'perspective(700px) rotateY(' + (x * 7).toFixed(2) + 'deg) rotateX(' + (-y * 7).toFixed(2) + 'deg)';
+    });
+    photo.addEventListener('mouseleave', function () {
+      if (pimg) pimg.style.transform = '';
+    });
+  }
+
   /* mobile nav */
   if (navToggle && topbar) {
     navToggle.addEventListener('click', function () {
