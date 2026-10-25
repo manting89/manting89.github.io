@@ -107,7 +107,7 @@
         <div>
           <a class="title" href="./files/1Bogoliubov/2026-MMS.pdf" target="_blank" rel="noopener">A structure-preserving Fourier spectral method for computing the Bogoliubov&ndash;de Gennes excitations of spin-1 Bose&ndash;Einstein Condensates</a>
           <div class="authors">Li, Yu; Li, Zhixuan; <b>Xie, Manting</b>*; Zhang, Yong</div>
-          <div class="venue"><em>Multiscale Model. Simul.</em>, accepted, 2026.</div>
+          <div class="venue"><em>Multiscale Model. Simul.</em>, 24 (2026), no. 3, pp. 1033&ndash;1059.</div>
         </div>
         <div class="side"><span class="badge gold">2026</span><a class="pill-link" href="./files/1Bogoliubov/2026-MMS.pdf" target="_blank" rel="noopener">PDF</a></div>
       </div>
@@ -147,7 +147,7 @@
         <div>
           <a class="title" href="./files/3EP/2023-NA.pdf" target="_blank" rel="noopener">Local and parallel multigrid method for semilinear Neumann problem with nonlinear boundary condition</a>
           <div class="authors">Xu, Fei; Wang, Bingyi; <b>Xie, Manting</b>*</div>
-          <div class="venue"><em>Numer. Algorithms</em>, doi: https://doi.org/10.1007/s11075-023-01643-5.</div>
+          <div class="venue"><em>Numer. Algorithms</em>, doi: <a href="https://doi.org/10.1007/s11075-023-01643-5" target="_blank" rel="noopener">10.1007/s11075-023-01643-5</a>.</div>
         </div>
         <div class="side"><span class="badge">2023</span><a class="pill-link" href="./files/3EP/2023-NA.pdf" target="_blank" rel="noopener">PDF</a></div>
       </div>
@@ -372,8 +372,9 @@
 <script src="homepage.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  var d = new Date(), p = function (n) { return n < 10 ? '0' + n : n; };
-  document.getElementById('updated').textContent = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  var lm = new Date(document.lastModified), p = function (n) { return n < 10 ? '0' + n : n; };
+  if (isNaN(lm.getTime())) lm = new Date();
+  document.getElementById('updated').textContent = lm.getFullYear() + '-' + p(lm.getMonth() + 1) + '-' + p(lm.getDate());
 </script>
 </body>
 </html>

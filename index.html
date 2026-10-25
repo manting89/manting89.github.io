@@ -119,21 +119,24 @@
         <span class="tl-date">2026.03</span>
         <span class="tl-body">
           <a href="./files/1Bogoliubov/2026-MMS.pdf" target="_blank" rel="noopener">Our paper</a> has been
-          accepted by <strong><em>Multiscale Model. Simul.</em></strong>
+          published in <strong><em>Multiscale Model. Simul.</em></strong>
+          (24 (2026), no. 3, pp. 1033&ndash;1059).
         </span>
       </div>
       <div class="tl-item reveal">
         <span class="tl-date">2026.02</span>
         <span class="tl-body">
           <a href="./files/1Bogoliubov/2026-JCP.pdf" target="_blank" rel="noopener">Our paper</a> has been
-          accepted by <strong><em>J. Comput. Phys.</em></strong>
+          published in <strong><em>J. Comput. Phys.</em></strong>
+          (556 (2026), Paper No. 114813).
         </span>
       </div>
       <div class="tl-item reveal">
         <span class="tl-date">2025.12</span>
         <span class="tl-body">
           <a href="./files/3EP/2026-SINUM.pdf" target="_blank" rel="noopener">Our paper</a> has been
-          accepted by <strong><em>SIAM J. Numer. Anal.</em></strong>
+          published in <strong><em>SIAM J. Numer. Anal.</em></strong>
+          (64 (2026), no. 3, pp. 631&ndash;655).
         </span>
       </div>
       <div class="tl-item reveal">
@@ -254,7 +257,7 @@
         <div>
           <a class="title" href="./files/1Bogoliubov/2026-MMS.pdf" target="_blank" rel="noopener">A structure-preserving Fourier spectral method for computing the Bogoliubov&ndash;de Gennes excitations of spin-1 Bose&ndash;Einstein condensates</a>
           <div class="authors">Li, Yu; Li, Zhixuan; <b>Xie, Manting</b>*; Zhang, Yong</div>
-          <div class="venue"><em>Multiscale Model. Simul.</em>, accepted, 2026.</div>
+          <div class="venue"><em>Multiscale Model. Simul.</em>, 24 (2026), no. 3, pp. 1033&ndash;1059.</div>
         </div>
         <div class="side"><span class="badge gold">2026</span></div>
       </div>
@@ -272,7 +275,7 @@
         <div>
           <a class="title" href="./files/3EP/2026-SINUM.pdf" target="_blank" rel="noopener">A novel augmented subspace adaptive finite element method for the eigenvalue problem with discontinuous coefficients</a>
           <div class="authors"><b>Xie, Manting</b>; Yue, Meiling</div>
-          <div class="venue"><em>SIAM J. Numer. Anal.</em>, accepted, 2026.</div>
+          <div class="venue"><em>SIAM J. Numer. Anal.</em>, 64 (2026), no. 3, pp. 631&ndash;655.</div>
         </div>
         <div class="side"><span class="badge gold">2026</span></div>
       </div>
@@ -428,7 +431,7 @@
 
     <div class="grid-2">
       <div class="card reveal">
-        <h3 class="sub">Cooperant Students</h3>
+        <h3 class="sub">Collaborating Students</h3>
         <div class="people">
           <span class="person"><span class="av">SZ</span>Shaobo ZHANG <span class="aff">Sichuan University</span></span>
           <span class="person"><span class="av">XL</span>Xin LIU <span class="aff">East China Institute of Technology</span></span>
@@ -518,8 +521,9 @@
 <script src="homepage.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  var d = new Date(), p = function (n) { return n < 10 ? '0' + n : n; };
-  document.getElementById('updated').textContent = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  var lm = new Date(document.lastModified), p = function (n) { return n < 10 ? '0' + n : n; };
+  if (isNaN(lm.getTime())) lm = new Date();
+  document.getElementById('updated').textContent = lm.getFullYear() + '-' + p(lm.getMonth() + 1) + '-' + p(lm.getDate());
 </script>
 </body>
 </html>

@@ -371,8 +371,9 @@
 <script src="homepage.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  var d = new Date(), p = function (n) { return n < 10 ? '0' + n : n; };
-  document.getElementById('updated').textContent = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  var lm = new Date(document.lastModified), p = function (n) { return n < 10 ? '0' + n : n; };
+  if (isNaN(lm.getTime())) lm = new Date();
+  document.getElementById('updated').textContent = lm.getFullYear() + '-' + p(lm.getMonth() + 1) + '-' + p(lm.getDate());
 </script>
 </body>
 </html>
